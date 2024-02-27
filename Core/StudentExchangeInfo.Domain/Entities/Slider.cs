@@ -8,5 +8,6 @@ namespace StudentExchangeInfo.Domain.Entities
 		[Required(ErrorMessage = "Bu xana boş ola bilməz")]
 		public string Title { get; set; }
 		public string SubTitle { get; set; }
+		public string Image { get; set; }
 	}
 }

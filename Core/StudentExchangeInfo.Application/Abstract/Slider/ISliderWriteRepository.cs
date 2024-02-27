@@ -5,5 +5,6 @@ namespace StudentExchangeInfo.Application.Abstract
 {
     public interface ISliderWriteRepository : IWriteRepository<Slider>
     {
+        void Activity(Slider slider);
     }
 }
