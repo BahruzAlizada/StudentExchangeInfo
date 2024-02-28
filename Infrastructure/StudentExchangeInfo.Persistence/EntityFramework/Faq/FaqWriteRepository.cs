@@ -16,6 +16,7 @@ namespace StudentExchangeInfo.Persistence.EntityFramework
             else
                 faq.Status = true;
 
+            context.Faqs.Update(faq);
             context.SaveChanges();
         }
     }

@@ -14,6 +14,7 @@ namespace StudentExchangeInfo.UI.Areas.Admin.Controllers
             this.contactReadRepository = contactReadRepository;
             this.contactWriteRepository = contactWriteRepository;
         }
+
         #region Index
         public async Task<IActionResult> Index(int page =1)
         {

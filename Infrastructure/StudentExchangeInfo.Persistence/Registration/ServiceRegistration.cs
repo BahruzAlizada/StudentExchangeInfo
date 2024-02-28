@@ -17,11 +17,14 @@ namespace StudentExchangeInfo.Persistence.Registration
             services.AddScoped<IFaqReadRepository, FaqReadRepository>();
             services.AddScoped<IFaqWriteRepository,  FaqWriteRepository>();
 
+            services.AddScoped<ISocialMediaReadRepository, SocialMediaReadRepository>();
+            services.AddScoped<ISocialMediaWriteRepository, SocialMediaWriteRepository>();
+
+            services.AddScoped<ISubscribeReadRepository, SubscribeReadRepository>();
+            services.AddScoped<ISubscribeWriteRepository, SubscribeWriteRepository>();
+
             services.AddScoped<IContactReadRepository, ContactReadRepository>();
             services.AddScoped<IContactWriteRepository, ContactWriteRepository>();
-
-            //services.AddScoped<ISubscribeReadRepository, SubscribeReadRepository>();
-            //services.AddScoped<ISubscribeWriteRepository, SubscribeWriteRepository>();
         }
     }
 }
