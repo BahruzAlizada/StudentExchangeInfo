@@ -1,0 +1,106 @@
+﻿@model List<Faq>
+
+@{
+    ViewBag.Title = "FAQ";
+}
+
+@{
+    int number = 1;
+}
+
+@section Css {
+    <style>
+        /* Style the buttons that are used to open and close the accordion panel */
+        .accordion {
+            background-color: white;
+            color: black;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            text-align: left;
+            border-radius: 5px;
+            border: 1px solid #dedede;
+            outline: none;
+            transition: all linear .15s;
+            text-shadow: 0 1px 0 #444;
+        }
+
+            /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+            .active, .accordion:hover {
+                background-color: #337ab7;
+                color: white;
+            }
+
+        /* Style the accordion panel. Note: hidden by default */
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            display: none;
+            overflow: hidden;
+        }
+    </style>
+}
+
+<!--? Hero Area Start-->
+<div class="slider-area ">
+    <div class="single-slider slider-height2 d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap text-center">
+                        <h2>FAQ</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--? Hero Area End-->
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-12" style="padding:30px 0px;">
+            <h4>Ən Çox Verilən Suallar</h4>
+        </div>
+
+        <div class="col-12" style="padding-bottom:30px;">
+            @foreach (Faq faq in Model)
+            {
+                <div style="padding:12px 3px;">
+                    <button class="accordion">@number. @faq.Quetsion</button>
+                    <div class="panel">
+                        <p>@Html.Raw(faq.Answer)</p>
+                    </div>
+                </div>
+
+                number++;
+
+            }
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                /* Toggle between adding and removing the "active" class,
+                to highlight the button that controls the panel */
+                this.classList.toggle("active");
+
+                /* Toggle between hiding and showing the active panel */
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }
+    </script>
+}

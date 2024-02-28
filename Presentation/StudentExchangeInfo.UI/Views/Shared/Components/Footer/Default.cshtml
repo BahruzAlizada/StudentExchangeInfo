@@ -1,0 +1,61 @@
+﻿
+<div class="row d-flex justify-content-between">
+    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
+        <div class="single-footer-caption mb-50">
+            <div class="single-footer-caption mb-30">
+                <!-- logo -->
+                <div class="footer-logo">
+                    <a asp-controller="Home" asp-action="Index"><img src="~/assets/img/logo/logo2_footer.png" alt=""></a>
+                </div>
+                <div class="footer-tittle" style="margin-top:-50px;">
+                    <div class="footer-pera">
+                        <p style="margin-top:80px;">
+                            Asorem ipsum adipolor sdit amet, consectetur adipisicing elitcf sed do eiusmod tem.
+                        </p>
+                    </div>
+                    <div class="footer-copy-right f-right">
+                        <!-- social -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-2 col-lg-3 col-md-3 col-sm-5">
+        <div class="single-footer-caption mb-50">
+            <div class="footer-tittle">
+                <h4>Sürətli linklər</h4>
+                <ul>
+                    <li><a asp-controller="Home" asp-action="Index">Ana Səhifə</a></li>
+                    <li><a asp-controller="Product" asp-action="Index">Məhsullar</a></li>
+                    <li><a asp-controller="About" asp-action="Index">Haqqımızda</a></li>
+                    <li><a asp-controller="Contact" asp-action="Index">Əlaqə</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-7">
+        <div class="single-footer-caption mb-50">
+            <div class="footer-tittle">
+                <h4>Yeni Məhsullar</h4>
+                <ul>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-7">
+        <div class="single-footer-caption mb-50">
+            <div class="footer-tittle">
+                <h4>Sosial Media</h4>
+                <ul style="display:flex;">
+                    @* @foreach (SocialMedia item in Model)
+                    {
+                        <li class="mx-2">
+                            <a style="color:black;font-size:19px;" href="@item.Link" target="_blank">@Html.Raw(@item.Icon)</a>
+                        </li>
+                    } *@
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

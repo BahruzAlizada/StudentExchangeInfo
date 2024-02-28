@@ -1,4 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using StudentExchangeInfo.Application.Abstract;
+using StudentExchangeInfo.Application.ViewModels;
+using StudentExchangeInfo.Domain.Entities;
 using StudentExchangeInfo.UI.Models;
 using System.Diagnostics;
 
@@ -6,27 +9,30 @@ namespace StudentExchangeInfo.UI.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ISliderReadRepository sliderReadRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ISliderReadRepository sliderReadRepository)
         {
-            _logger = logger;
+            this.sliderReadRepository = sliderReadRepository;
         }
 
+        #region Index
         public IActionResult Index()
         {
-            return View();
+            HomeVM homeVM = new HomeVM
+            {
+                Slider = sliderReadRepository.GetAll(x=>x.Status)
+            };
+            return View(homeVM);
         }
+        #endregion
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        #region Error
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View();
         }
+        #endregion
     }
 }
