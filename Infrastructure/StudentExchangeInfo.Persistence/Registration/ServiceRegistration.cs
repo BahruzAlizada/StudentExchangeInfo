@@ -11,6 +11,9 @@ namespace StudentExchangeInfo.Persistence.Registration
             services.AddScoped<ISliderReadRepository, SliderReadRepository>();
             services.AddScoped<ISliderWriteRepository, SliderWriteRepository>();
 
+            services.AddScoped<IUniversityReadRepository, UniversityReadRepository>();
+            services.AddScoped<IUniversityWriteRepository, UniversityWriteRepository>();
+
             services.AddScoped<IAboutReadRepository, AboutReadRepository>();
             services.AddScoped<IAboutWriteRepository, AboutWriteRepository>();
             

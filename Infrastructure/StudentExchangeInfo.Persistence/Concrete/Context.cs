@@ -11,6 +11,7 @@ namespace StudentExchangeInfo.Persistence.Concrete
         }
         
         public DbSet<Slider> Sliders { get; set; }
+        public DbSet<University> Universities { get; set; }
         public DbSet<About> About { get; set; }
         public DbSet<Subscribe> Subscribes { get; set; }
         public DbSet<Faq> Faqs { get; set; }
