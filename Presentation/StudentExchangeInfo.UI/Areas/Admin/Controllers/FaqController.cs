@@ -60,7 +60,6 @@ namespace StudentExchangeInfo.UI.Areas.Admin.Controllers
 
             dbFaq.Id = faq.Id;
             dbFaq.Status=faq.Status;
-            dbFaq.Created = faq.Created;
             dbFaq.Answer = faq.Answer;
             dbFaq.Quetsion = faq.Quetsion;
 

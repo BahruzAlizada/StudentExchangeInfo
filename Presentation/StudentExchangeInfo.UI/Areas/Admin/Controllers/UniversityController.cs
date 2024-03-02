@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StudentExchangeInfo.Application.Abstract;
 using StudentExchangeInfo.Domain.Entities;
+using StudentExchangeInfo.Infrastructure.Helpers;
 
 namespace StudentExchangeInfo.UI.Areas.Admin.Controllers
 {
@@ -9,10 +10,13 @@ namespace StudentExchangeInfo.UI.Areas.Admin.Controllers
     {
         private readonly IUniversityReadRepository universityReadRepository;
         private readonly IUniversityWriteRepository universityWriteRepository;
-        public UniversityController(IUniversityReadRepository universityReadRepository, IUniversityWriteRepository universityWriteRepository)
+        private readonly IWebHostEnvironment env;
+        public UniversityController(IUniversityReadRepository universityReadRepository, IUniversityWriteRepository universityWriteRepository
+            , IWebHostEnvironment env)
         {
             this.universityReadRepository = universityReadRepository;
             this.universityWriteRepository = universityWriteRepository;
+            this.env = env;
         }
         #region Index
         public async Task<IActionResult> Index(int page = 1)
@@ -30,6 +34,35 @@ namespace StudentExchangeInfo.UI.Areas.Admin.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public async Task<IActionResult> Create(University university)
+        {
+            #region Image
+            if (university.Photo is null)
+            {
+                ModelState.AddModelError("Photo", "Bu xana boş ola bilməz");
+                return View();
+            }
+            if (!university.Photo.IsImage())
+            {
+                ModelState.AddModelError("Photo", "Yalnız şəkil tipli fayl");
+                return View();
+            }
+            if (university.Photo.IsOlder256Kb())
+            {
+                ModelState.AddModelError("Photo", "Maksimum 256Kb");
+                return View();
+            }
+            string folder = Path.Combine(env.WebRootPath, "assets", "img", "university");
+            university.Image = await university.Photo.SaveFileAsync(folder);
+            #endregion
+
+            await universityWriteRepository.AddAsync(university);
+            return RedirectToAction("Index");
         }
         #endregion
 
@@ -52,10 +85,33 @@ namespace StudentExchangeInfo.UI.Areas.Admin.Controllers
             University dbUni = universityReadRepository.Get(x => x.Id == id);
             if (dbUni == null) return BadRequest();
 
+            #region Image
+            if (uni.Photo is not null)
+            {
+                if (!uni.Photo.IsImage())
+                {
+                    ModelState.AddModelError("Photo", "Yalnız şəkil tipli fayllar");
+                    return View();
+                }
+                if (uni.Photo.IsOlder256Kb())
+                {
+                    ModelState.AddModelError("Photo", "Maksimum 256Kb");
+                    return View();
+                }
+                string folder = Path.Combine(env.WebRootPath, "assets", "img", "university");
+                uni.Image = await uni.Photo.SaveFileAsync(folder);
+                string path = Path.Combine(env.WebRootPath, folder, dbUni.Image);
+                if (System.IO.File.Exists(path))
+                    System.IO.File.Delete(path);
+            }
+            else
+                uni.Image = dbUni.Image;
+            #endregion
+
             dbUni.Id = uni.Id;
             dbUni.Status = uni.Status;
-            dbUni.Created = uni.Created;
             dbUni.Name = uni.Name;
+            dbUni.IsRegistred = uni.IsRegistred;
 
             await universityWriteRepository.UpdateAsync(uni);
             return RedirectToAction("Index");

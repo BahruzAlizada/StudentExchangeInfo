@@ -14,5 +14,6 @@ namespace StudentExchangeInfo.Domain.Entities
 		public string Email { get; set; }
 		[Required(ErrorMessage = "Bu xana boş ola bilməz")]
 		public string FullName { get; set; }
+		public DateTime Created { get; set; } = DateTime.UtcNow.AddHours(4);
 	}
 }

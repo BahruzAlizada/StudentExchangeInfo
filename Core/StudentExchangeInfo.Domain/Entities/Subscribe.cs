@@ -8,5 +8,6 @@ namespace StudentExchangeInfo.Domain.Entities
 		[Required(ErrorMessage = "Bu xana boş ola bilməz")]
 		[DataType(DataType.EmailAddress,ErrorMessage = "Email ünvanınızı düzgün daxil edin")]
 		public string Email { get; set; }
+		public DateTime Created { get; set; } = DateTime.UtcNow.AddHours(4);
 	}
 }

@@ -45,7 +45,6 @@ namespace StudentExchangeInfo.UI.Areas.Admin.Controllers
             dbAbout.Id = about.Id;
             dbAbout.Description = about.Description;
             dbAbout.Status = about.Status;
-            dbAbout.Created = about.Created;
 
             aboutWriteRepository.Update(about);
             return RedirectToAction("Index");

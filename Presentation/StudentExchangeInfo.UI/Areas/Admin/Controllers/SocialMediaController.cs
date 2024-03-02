@@ -60,7 +60,6 @@ namespace StudentExchangeInfo.UI.Areas.Admin.Controllers
 
             dbSocialMedia.Id = socialMedia.Id;
             dbSocialMedia.Status = socialMedia.Status;
-            dbSocialMedia.Created = socialMedia.Created;
             dbSocialMedia.Icon = socialMedia.Icon;
             dbSocialMedia.Link = socialMedia.Link;
 

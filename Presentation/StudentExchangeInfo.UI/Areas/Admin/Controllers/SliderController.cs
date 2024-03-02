@@ -106,7 +106,6 @@ namespace StudentExchangeInfo.UI.Areas.Admin.Controllers
 			#endregion
 
 			dbSlider.Id = slider.Id;
-            dbSlider.Created = slider.Created;
             dbSlider.Status = slider.Status;
             dbSlider.Title = slider.Title;
             dbSlider.SubTitle = slider.SubTitle;
