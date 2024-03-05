@@ -72,12 +72,13 @@
                     <!-- Dashboard -->
                     <li class="menu-item">
                         <a asp-controller="Dashboard" asp-action="Index" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                            <div>Ana Səhifə</div>
+                            <i class='menu-icon tf-icons bx bxs-dashboard'></i>
+@*                             <i class=" bx bx-home-circle"></i>
+ *@                            <div>Ana Səhifə</div>
                         </a>
                     </li>
 
-                    <li class="menu-item">
+                    @* <li class="menu-item">
                         <a asp-controller="Product" asp-action="Index" class="menu-link">
                             <i class='menu-icon tf-icons bx bxl-product-hunt'></i>
                             <div>Məhsullar</div>
@@ -89,7 +90,7 @@
                             <i class='menu-icon tf-icons bx bxl-medium-square'></i>
                             <div>Müştərilər</div>
                         </a>
-                    </li>
+                    </li> *@
 
                 
                     <li class="menu-header small text-uppercase">
@@ -131,17 +132,13 @@
                         </a>
 
                         <ul class="menu-sub">
+
                             <li class="menu-item">
                                 <a asp-controller="University" asp-action="Index" class="menu-link">
                                     <div>Universitetlər</div>
                                 </a>
                             </li>
-                            <li class="menu-item">
-                                <a asp-controller="Gender" asp-action="Index" class="menu-link">
-                                    <div>Cins</div>
-                                </a>
-                            </li>
-                            
+                           
                         </ul>
                     </li>
 
