@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StudentExchangeInfo.Persistence.Concrete;
 
@@ -11,9 +12,11 @@ using StudentExchangeInfo.Persistence.Concrete;
 namespace StudentExchangeInfo.Persistence.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240308170613_CreatePrerequisitesTable")]
+    partial class CreatePrerequisitesTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -202,30 +205,6 @@ namespace StudentExchangeInfo.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Faqs");
-                });
-
-            modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.Motivation", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("MotivationAZE")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MotivationENG")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Motivations");
                 });
 
             modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.Prerequisite", b =>

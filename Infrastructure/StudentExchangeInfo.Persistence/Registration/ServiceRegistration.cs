@@ -26,6 +26,12 @@ namespace StudentExchangeInfo.Persistence.Registration
             services.AddScoped<ISubscribeReadRepository, SubscribeReadRepository>();
             services.AddScoped<ISubscribeWriteRepository, SubscribeWriteRepository>();
 
+            services.AddScoped<IPrerequisiteReadRepository, PrerequisiteReadRepository>();
+            services.AddScoped<IPrerequisiteWriteRepository, PrerequisiteWriteRepository>();
+
+            services.AddScoped<IMotivationReadRepository, MotivationReadRepository>();
+            services.AddScoped<IMotivationWriteRepository, MotivationWriteRepository>();
+
             services.AddScoped<IContactReadRepository, ContactReadRepository>();
             services.AddScoped<IContactWriteRepository, ContactWriteRepository>();
         }

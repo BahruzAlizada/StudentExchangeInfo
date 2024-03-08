@@ -1,0 +1,54 @@
+﻿@model Motivation
+
+
+<div class="row">
+    <div class="col-8">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Motivasiya məktubu</h5>
+            </div>
+            <div class="card-body">
+                <form method="post">
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="MotivationENG" class="form-label">Motivasiya İngilis dilində</label>
+                        <textarea asp-for="MotivationENG" id="editor1" class="form-control"></textarea>
+                        <span asp-validation-for="MotivationENG" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="MotivationAZE" class="form-label">Motivasiya Azərbaycan dilində</label>
+                        <textarea asp-for="MotivationAZE" id="editor2" class="form-control"></textarea>
+                        <span asp-validation-for="MotivationAZE" class="text-danger"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Yenilə</button>
+                    <a asp-action="Index" class="btn btn-secondary">Geri qayıt</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor1'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor2'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+}

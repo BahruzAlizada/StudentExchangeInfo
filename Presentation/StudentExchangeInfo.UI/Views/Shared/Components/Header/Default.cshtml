@@ -15,8 +15,14 @@
                         
                     }
                     <li><a asp-controller="Home" asp-action="Index">Ana Səhifə</a></li>
-                    <li><a asp-controller="Product" asp-action="Index">Məhsullar</a></li>
                     <li><a asp-controller="About" asp-action="Index">Haqqımızda</a></li>
+                    <li>
+                        <a href="#">İlkin Tələblər</a>
+                        <ul class="submenu">
+                            <li><a asp-controller="Prerequisite" asp-action="Index">İlkin Tələblər</a></li>
+                            <li><a asp-controller="Motivation" asp-action="Index">Motivasiya məktubu</a></li>
+                        </ul>
+                    </li>
                     <li><a asp-controller="Contact" asp-action="Index">Əlaqə</a></li>
                 </ul>
             </nav>

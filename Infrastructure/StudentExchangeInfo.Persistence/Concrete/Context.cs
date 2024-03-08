@@ -19,5 +19,7 @@ namespace StudentExchangeInfo.Persistence.Concrete
         public DbSet<Faq> Faqs { get; set; }
         public DbSet<SocialMedia> SocialMedias { get; set; }
         public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Prerequisite> Prerequisites { get; set; }
+        public DbSet<Motivation> Motivations { get; set; }
     }
 }
