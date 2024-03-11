@@ -84,6 +84,63 @@ namespace StudentExchangeInfo.UI.Areas.Admin.Controllers
         }
         #endregion
 
+        #region Update
+        public async Task<IActionResult> Update(int? id)
+        {
+            if (id == null) return NotFound();
+            AppUser? user = await userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
+            if (user == null) return BadRequest();
+
+            VebUserVM dbVM = new VebUserVM
+            {
+                Id = user.Id,
+                Name = user.Name,
+                SurName = user.Surname,
+                Username = user.UserName,
+                Email = user.Email,
+                Created = user.Created,
+                Status = user.Status
+            };
+
+            return View(dbVM);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public async Task<IActionResult> Update(int? id, VebUserVM newVM)
+        {
+            #region Get
+            if (id == null) return NotFound();
+            AppUser? user = await userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
+            if (user == null) return BadRequest();
+
+            VebUserVM dbVM = new VebUserVM
+            {
+                Id = user.Id,
+                Name = user.Name,
+                SurName = user.Surname,
+                Username = user.UserName,
+                Email = user.Email,
+                Created = user.Created,
+                Status = user.Status
+            };
+            #endregion
+
+          
+            user.Id = newVM.Id;
+            user.Name = newVM.Name;
+            user.Surname = newVM.SurName;
+            user.UserName = newVM.Username;
+            user.Email = newVM.Email;
+            user.Status = dbVM.Status;
+            user.Created = dbVM.Created;
+
+            await userManager.UpdateAsync(user);
+            return RedirectToAction("Index");
+        }
+        #endregion
+
         #region RoleChange
         public async Task<IActionResult> RoleChange(int? id)
         {
@@ -113,6 +170,41 @@ namespace StudentExchangeInfo.UI.Areas.Admin.Controllers
 
             await userManager.RemoveFromRoleAsync(user, roleVM.RoleName);
             await userManager.AddToRoleAsync(user, role);
+
+            return RedirectToAction("Index");
+        }
+        #endregion
+
+        #region ResetPassword
+        public async Task<IActionResult> ResetPassword(int? id)
+        {
+            if (id == null) return NotFound();
+            AppUser? user = await userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
+            if (user == null) return BadRequest();
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public async Task<IActionResult> ResetPassword(int? id, ResetPasswordVM resetPassword)
+        {
+            if (id == null) return NotFound();
+            AppUser? user = await userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
+            if (user == null) return BadRequest();
+
+            string token = await userManager.GeneratePasswordResetTokenAsync(user);
+
+            IdentityResult result = await userManager.ResetPasswordAsync(user, token, resetPassword.NewPassword);
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                return View();
+            }
 
             return RedirectToAction("Index");
         }

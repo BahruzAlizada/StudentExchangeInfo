@@ -1,11 +1,9 @@
-﻿
-
-using StudentExchangeInfo.Domain.Entities;
+﻿using StudentExchangeInfo.Domain.Entities;
 
 namespace StudentExchangeInfo.Application.ViewModels
 {
     public class HomeVM
     {
-        public List<Slider> Slider { get; set; }
+        public Slider Slider { get; set; }
     }
 }

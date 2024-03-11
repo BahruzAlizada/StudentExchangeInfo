@@ -21,7 +21,7 @@ namespace StudentExchangeInfo.UI.Controllers
         {
             HomeVM homeVM = new HomeVM
             {
-                Slider = sliderReadRepository.GetAll(x=>x.Status)
+                Slider = sliderReadRepository.Get()
             };
             return View(homeVM);
         }
