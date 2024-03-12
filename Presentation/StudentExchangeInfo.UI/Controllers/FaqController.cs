@@ -9,7 +9,7 @@ namespace StudentExchangeInfo.UI.Controllers
     {
         private readonly IFaqReadRepository faqReadRepository;
         public FaqController(IFaqReadRepository faqReadRepository)
-        {
+        {                                                                              
              this.faqReadRepository=faqReadRepository;
         }
 

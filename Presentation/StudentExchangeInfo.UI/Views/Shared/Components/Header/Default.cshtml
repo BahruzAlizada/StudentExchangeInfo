@@ -23,7 +23,14 @@
                             <li><a asp-controller="Motivation" asp-action="Index">Motivasiya məktubu</a></li>
                         </ul>
                     </li>
-                    <li><a asp-controller="Contact" asp-action="Index">Əlaqə</a></li>
+                    <li>
+                        <a href="#">Əlaqə</a>
+                        <ul class="submenu">
+                            <li><a asp-controller="Contact" asp-action="Index">Bizmlə Əlaqə</a></li>
+                            <li><a asp-controller="Faq" asp-action="Index">Faq</a></li>
+                        </ul>
+                    </li>
+                    @* <li><a asp-controller="Contact" asp-action="Index">Əlaqə</a></li> *@
                 </ul>
             </nav>
         </div>
