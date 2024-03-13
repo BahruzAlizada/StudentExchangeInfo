@@ -1,0 +1,66 @@
+﻿@model StudentVM
+
+<div class="row">
+    <div class="col-8">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Tələbə</h5>
+            </div>
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <div class="card-body">
+                <form method="post">
+
+                    <div class="row g-2">
+                        <div class="col-6 form-group">
+                            <label asp-for="Name" class="form-label">Ad</label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-6  form-group">
+                            <label asp-for="Surname" class="form-label">Soyad</label>
+                            <input asp-for="Surname" class="form-control" />
+                            <span asp-validation-for="Surname" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="Username" class="form-label">İstifadəçi adı</label>
+                        <input asp-for="Username" class="form-control" />
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="Email" class="form-label">Email</label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-12 form-group p_star my-3">
+                        <select class="form-control" name="uniId">
+                            @foreach (University university in ViewBag.Universities)
+                            {
+                                if (Model.UniId == university.Id)
+                                {
+                                    <option selected value="@university.Id">@university.Name</option>
+                                }
+                                else
+                                {
+                                    <option value="@university.Id">@university.Name</option>
+                                }
+                            }
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Yenilə</button>
+                    <a asp-action="Index" class="btn btn-secondary">Geri qayıt</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
