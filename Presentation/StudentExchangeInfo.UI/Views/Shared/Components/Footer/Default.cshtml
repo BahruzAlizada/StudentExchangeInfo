@@ -1,5 +1,6 @@
 ﻿
 <div class="row d-flex justify-content-between">
+
     <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
         <div class="single-footer-caption mb-50">
             <div class="single-footer-caption mb-30">
@@ -21,6 +22,7 @@
             </div>
         </div>
     </div>
+
     <div class="col-xl-2 col-lg-3 col-md-3 col-sm-5">
         <div class="single-footer-caption mb-50">
             <div class="footer-tittle">
@@ -34,28 +36,22 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-7">
-        <div class="single-footer-caption mb-50">
-            <div class="footer-tittle">
-                <h4>Yeni Məhsullar</h4>
-                <ul>
-                </ul>
+
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+        <div class="subscribe_part" style="background:none;">
+
+        <div class="footer-tittle">
+            <h4>Abunə ol</h4>
+            <p style="color:black;">Yeniliklərdən ilk sən xəbərdar olmaq istəyirsənsə abunə ol.</p>
+            <p></p>
+            <div class="subscribe_form">
+                <input style="color:black;" type="email" placeholder="Email ünvanınızı daxil edin">
+                <a id="subBtn" class="btn_1">Abunə ol</a>
             </div>
+            <div id="error" class="text-danger"></div>
+        </div>
+
         </div>
     </div>
-    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-7">
-        <div class="single-footer-caption mb-50">
-            <div class="footer-tittle">
-                <h4>Sosial Media</h4>
-                <ul style="display:flex;">
-                    @* @foreach (SocialMedia item in Model)
-                    {
-                        <li class="mx-2">
-                            <a style="color:black;font-size:19px;" href="@item.Link" target="_blank">@Html.Raw(@item.Icon)</a>
-                        </li>
-                    } *@
-                </ul>
-            </div>
-        </div>
-    </div>
+
 </div>

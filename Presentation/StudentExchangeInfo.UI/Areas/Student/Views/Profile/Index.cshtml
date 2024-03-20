@@ -1,0 +1,72 @@
+﻿@model StudentVM
+
+<div class="row">
+    <div class="col-md-12">
+        <ul class="nav nav-pills flex-column flex-md-row mb-3">
+            <li class="nav-item">
+                <a class="nav-link active" asp-action="Index"asp-route-username="@Model.Username"><i class="bx bx-user me-1"></i> Profil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="ChangePassword"><i class='bx bxs-lock-open'></i> Şifrəni dəyiş</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="Logout"><i class='bx bx-power-off'></i> Çıxış et</a>
+            </li>
+
+        </ul>
+        <div class="card mb-4">
+            <!-- Account -->
+            <div class="card-body">
+                <h6>@Model.Name @Model.Surname</h6>
+                <p style="margin-top:-8px;">@ViewBag.UniName</p>
+            </div>
+            <hr class="my-0" />
+            <span>Hesabı yenilədkidən sonra hesabdan çıxış ediləcəkdir.</span>
+            <div class="card-body">
+                <form id="formAccountSettings" method="post">
+                    <div class="row">
+                        <div class="mb-3 col-md-6">
+                            <label asp-for="Name" class="form-label">Ad</label>
+                            <input asp-for="Name" class="form-control" />
+                            <span class="text-danger" asp-validation-for="Name"></span>
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label asp-for="Surname" class="form-label">Soyad</label>
+                            <input asp-for="Surname" class="form-control" />
+                            <span class="text-danger" asp-validation-for="Surname"></span>
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label asp-for="Email" for="email" class="form-label">Elektron Poçt</label>
+                            <input asp-for="Email" class="form-control" />
+                            <span class="text-danger" asp-validation-for="Email"></span>
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label asp-for="Username" class="form-label">İstifadəçi adı</label>
+                            <input asp-for="Username" class="form-control" />
+                            <span class="text-danger" asp-validation-for="Username"></span>
+                        </div>
+
+                    </div>
+                    <div class="mt-2">
+                        <button type="submit" class="btn btn-success me-2">Yenilə</button>
+                    </div>
+                </form>
+            </div>
+        
+            <!-- /Account -->
+        </div>
+        @* <div class="card">
+            <h5 class="card-header">Hesabı deaktiv et</h5>
+            <div class="card-body">
+                <div class="mb-3 col-12 mb-0">
+                    <div class="alert alert-warning">
+                        <h6 class="alert-heading fw-bold mb-1">Hesabı deaktiv etmək istədiyinə əminsən ?</h6>
+                    </div>
+                </div>
+                <form id="formAccountDeactivation" onsubmit="return false">
+                    <button type="submit" class="btn btn-danger deactivate-account">Deaktiv et</button>
+                </form>
+            </div>
+        </div> *@
+    </div>
+</div>

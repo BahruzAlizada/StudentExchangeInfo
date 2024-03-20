@@ -56,11 +56,7 @@
 
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
-                    <a asp-controller="Dashboard" asp-action="Index"><img src="~/assets/img/logo/BaseLogo.png" alt="" style="width:160px;height:27px;"></a>
-                    @* <a asp-controller="Dashboard" asp-action="Index" class="app-brand-link" style="color:black;" >
-                        Student Exchange Info
-                    </a>*@
-
+                    <a asp-controller="Profile" asp-action="Index"><img src="~/assets/img/logo/BaseLogo.png" alt="" style="width:160px;height:27px;"></a>
                     <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
                         <i class="bx bx-chevron-left bx-sm align-middle"></i>
                     </a>
@@ -71,10 +67,9 @@
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
                     <li class="menu-item">
-                        <a asp-controller="Dashboard" asp-action="Index" class="menu-link">
-                            <i class='menu-icon tf-icons bx bxs-dashboard'></i>
-@*                             <i class=" bx bx-home-circle"></i>
- *@                            <div>Ana Səhifə</div>
+                        <a asp-controller="Profile" asp-action="Index" class="menu-link">
+                            <i class='menu-icon tf-icons bx bxs-user'></i>
+                             <div>Profil</div>
                         </a>
                     </li>
 
@@ -92,7 +87,7 @@
                         </a>
                     </li> *@
 
-                    <li class="menu-header small text-uppercase">
+ @*                    <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">Tələbələr,Universitetlər</span>
                     </li>
 
@@ -237,7 +232,7 @@
 
                         </ul>
                     </li>
-
+ *@
 
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">Səhifəyə geri qayıt</span>
@@ -270,7 +265,7 @@
 
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
                             <!--User-->
-                            <div class="dropdown">
+                           @*  <div class="dropdown">
                                 <a style="background-color:white;color:black;" class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Bahruz
                                 </a>
@@ -278,7 +273,7 @@
                                 <ul class="dropdown-menu">
                                     <li><a asp-area="default" asp-controller="Account" asp-action="Logout" class="dropdown-item">Çıxış Et</a></li>
                                 </ul>
-                            </div>
+                            </div> *@
                             <!--User-->
                         </ul>
                     </div>

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using StudentExchangeInfo.Application.Abstract;
 using StudentExchangeInfo.Application.ViewModels;
 using StudentExchangeInfo.Application.ViewModels.Student;
+using StudentExchangeInfo.Application.ViewModels.University;
 using StudentExchangeInfo.Domain.Entities;
 using StudentExchangeInfo.Domain.Identity;
 
@@ -115,10 +116,37 @@ namespace StudentExchangeInfo.UI.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public async Task<IActionResult> UniversityRegister(int uniId)
+        public async Task<IActionResult> UniversityRegister(int uniId, UniversityRegisterVM register)
         {
             ViewBag.Universities = await universityReadRepository.GetActiveUniversitiesAsync();
-            return View();
+
+            University university = await universityReadRepository.GetAsync(x => x.Id == uniId);
+
+            AppUser uni = new AppUser
+            {
+                Name = university.Name,
+                Surname = "XXX",
+                UserName = Guid.NewGuid().ToString("N").Substring(0, 8),
+                Email = register.Email,
+                IsUser = false,
+                UserRole = "University"
+            };
+
+            IdentityResult result = await userManager.CreateAsync(uni, register.Password);
+			if (!result.Succeeded)
+			{
+				foreach (var error in result.Errors)
+				{
+					ModelState.AddModelError("", error.Description);
+				}
+				return View();
+			}
+
+			var RoleName = await roleManager.FindByNameAsync("University");
+			await userManager.AddToRoleAsync(uni, RoleName.Name);
+			await signInManager.SignInAsync(uni, register.IsRemember);
+
+			return RedirectToAction("Index","Home");
         }
         #endregion
 
