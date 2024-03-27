@@ -40,17 +40,45 @@
 
                 @if (User.Identity.IsAuthenticated)
                 {
+                    if (User.IsInRole("Student"))
+                    {
+                        <div class="dropdown show">
+                            <a style="padding:9px; background-color:white; color:black;" href="#" class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @User.Identity.Name
+                            </a>
 
-                    <div class="dropdown show">
-                        <a style="padding:9px; background-color:white; color:black;" href="#" class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            @User.Identity.Name
-                        </a>
-
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" asp-area="Student" asp-controller="Profile" asp-action="Index">Panelə keçid</a>
-                            <a class="dropdown-item" asp-controller="Account" asp-action="Logout">Çıxış et</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" asp-area="Student" asp-controller="Profile" asp-action="Index">Panelə keçid</a>
+                                <a class="dropdown-item" asp-controller="Account" asp-action="Logout">Çıxış et</a>
+                            </div>
                         </div>
-                    </div>
+                    }
+                    if (User.IsInRole("University"))
+                    {
+                        <div class="dropdown show">
+                            <a style="padding:9px; background-color:white; color:black;" href="#" class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @User.Identity.Name
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" asp-area="UniversityPanel" asp-controller="Profile" asp-action="Index">Panelə keçid</a>
+                                <a class="dropdown-item" asp-controller="Account" asp-action="Logout">Çıxış et</a>
+                            </div>
+                        </div>
+                    }
+                    if(!User.IsInRole("Student") && !User.IsInRole("University"))
+                    {
+                        <div class="dropdown show">
+                            <a style="padding:9px; background-color:white; color:black;" href="#" class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @User.Identity.Name
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Panelə keçid</a>
+                                <a class="dropdown-item" asp-controller="Account" asp-action="Logout">Çıxış et</a>
+                            </div>
+                        </div>
+                    }
                 }
                 else
                 {

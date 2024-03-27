@@ -6,5 +6,6 @@ namespace StudentExchangeInfo.Application.Abstract
     public interface IUniversityWriteRepository : IWriteRepository<University>
     {
         void Activity(University university);
+        Task RegisterChangedUniversity(University university);
     }
 }

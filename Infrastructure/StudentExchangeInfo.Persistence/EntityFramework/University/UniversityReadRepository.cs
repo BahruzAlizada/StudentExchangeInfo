@@ -15,6 +15,24 @@ namespace StudentExchangeInfo.Persistence.EntityFramework
         {
            this.memoryCache = memoryCache;
         }
+
+        public async Task<University> FindUniversityByNameAsync(string name)
+        {
+            using var context = new Context();
+
+            University university = await context.Universities.FirstOrDefaultAsync(x=>x.Name==name);
+            return university;
+        }
+
+        public async Task<int> FindUniversityStudentCountAsync(string name)
+        {
+            using var context = new Context();
+
+            University university = await context.Universities.Include(x=>x.Users).FirstOrDefaultAsync(x => x.Name == name);
+            int count = university.Users.Count();
+            return count;
+        }
+
         public async Task<List<University>> GetActiveCachingUniversitiesAsync()
         {
             using var context = new Context();
@@ -37,7 +55,15 @@ namespace StudentExchangeInfo.Persistence.EntityFramework
             return universities;
         }
 
-        public async Task<List<University>> GetActiveUniversitiesAsync()
+		public async Task<List<University>> GetActiveForRegisteredUniversitiesAsync()
+		{
+            using var context = new Context();
+
+            List<University> universities = await context.Universities.Where(x=>!x.IsRegistred).OrderBy(x=>x.Name).ToListAsync();
+            return universities;
+		}
+
+		public async Task<List<University>> GetActiveUniversitiesAsync()
         {
             using var context = new Context();
 

@@ -4,6 +4,6 @@ namespace StudentExchangeInfo.Application.ViewModels
 {
     public class HomeVM
     {
-        public Slider Slider { get; set; }
+        public List<Slider> Sliders { get; set; }
     }
 }

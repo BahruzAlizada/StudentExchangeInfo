@@ -2,7 +2,7 @@
 
 using System.ComponentModel.DataAnnotations;
 
-namespace StudentExchangeInfo.Application.ViewModels.University
+namespace StudentExchangeInfo.Application.ViewModels
 {
     public class UniversityRegisterVM
     {

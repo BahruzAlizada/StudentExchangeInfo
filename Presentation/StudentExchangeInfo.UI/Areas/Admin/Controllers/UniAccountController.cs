@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using StudentExchangeInfo.Application.Abstract;
 using StudentExchangeInfo.Application.ViewModels;
 using StudentExchangeInfo.Application.ViewModels.Student;
-using StudentExchangeInfo.Application.ViewModels.University;
 using StudentExchangeInfo.Domain.Identity;
 
 namespace StudentExchangeInfo.UI.Areas.Admin.Controllers

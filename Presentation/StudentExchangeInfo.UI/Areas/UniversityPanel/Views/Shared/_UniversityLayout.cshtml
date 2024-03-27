@@ -56,11 +56,7 @@
 
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
-                    <a asp-controller="Dashboard" asp-action="Index"><img src="~/assets/img/logo/BaseLogo.png" alt="" style="width:160px;height:27px;"></a>
-                    @* <a asp-controller="Dashboard" asp-action="Index" class="app-brand-link" style="color:black;" >
-                        Student Exchange Info
-                    </a>*@
-
+                    <a asp-controller="Profile" asp-action="Index"><img src="~/assets/img/logo/BaseLogo.png" alt="" style="width:160px;height:27px;"></a>
                     <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
                         <i class="bx bx-chevron-left bx-sm align-middle"></i>
                     </a>
@@ -71,173 +67,172 @@
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
                     <li class="menu-item">
-                        <a asp-controller="Dashboard" asp-action="Index" class="menu-link">
-                            <i class='menu-icon tf-icons bx bxs-dashboard'></i>
-@*                             <i class=" bx bx-home-circle"></i>
- *@                            <div>Ana Səhifə</div>
+                        <a asp-controller="Profile" asp-action="Index" class="menu-link">
+                            <i class='menu-icon tf-icons bx bxs-user'></i>
+                            <div>Profil</div>
                         </a>
                     </li>
 
                     @* <li class="menu-item">
-                        <a asp-controller="Product" asp-action="Index" class="menu-link">
-                            <i class='menu-icon tf-icons bx bxl-product-hunt'></i>
-                            <div>Məhsullar</div>
-                        </a>
+                    <a asp-controller="Product" asp-action="Index" class="menu-link">
+                    <i class='menu-icon tf-icons bx bxl-product-hunt'></i>
+                    <div>Məhsullar</div>
+                    </a>
                     </li>
 
                     <li class="menu-item">
-                        <a asp-controller="Customer" asp-action="Index" class="menu-link">
-                            <i class='menu-icon tf-icons bx bxl-medium-square'></i>
-                            <div>Müştərilər</div>
-                        </a>
+                    <a asp-controller="Customer" asp-action="Index" class="menu-link">
+                    <i class='menu-icon tf-icons bx bxl-medium-square'></i>
+                    <div>Müştərilər</div>
+                    </a>
                     </li> *@
 
-                    <li class="menu-header small text-uppercase">
-                        <span class="menu-header-text">Tələbələr,Universitetlər</span>
+                    @*                    <li class="menu-header small text-uppercase">
+                    <span class="menu-header-text">Tələbələr,Universitetlər</span>
                     </li>
 
                     <li class="menu-item">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle">
-                            <i class="menu-icon tf-icons bx bx-layout"></i>
-                            <div data-i18n="Layouts">Tələbələr və Universistetlər</div>
-                        </a>
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-layout"></i>
+                    <div data-i18n="Layouts">Tələbələr və Universistetlər</div>
+                    </a>
 
-                        <ul class="menu-sub">
+                    <ul class="menu-sub">
 
-                            <li class="menu-item">
-                                <a asp-controller="Student" asp-action="Index" class="menu-link">
-                                    <div>Tələbələr</div>
-                                </a>
-                            </li>
-
-                            <li class="menu-item">
-                                <a asp-controller="UniAccount" asp-action="Index" class="menu-link">
-                                    <div>Universitetlər</div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                
-                    <li class="menu-header small text-uppercase">
-                        <span class="menu-header-text">Səhifə Modellər</span>
+                    <li class="menu-item">
+                    <a asp-controller="Student" asp-action="Index" class="menu-link">
+                    <div>Tələbələr</div>
+                    </a>
                     </li>
 
                     <li class="menu-item">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle">
-                            <i class="menu-icon tf-icons bx bx-layout"></i>
-                            <div data-i18n="Layouts">Səhifə Modellər</div>
-                        </a>
+                    <a asp-controller="UniAccount" asp-action="Index" class="menu-link">
+                    <div>Universitetlər</div>
+                    </a>
+                    </li>
+                    </ul>
+                    </li>
 
-                        <ul class="menu-sub">
 
-                            <li class="menu-item">
-                                <a asp-controller="Slider" asp-action="Index" class="menu-link">
-                                    <div>Slaydlar</div>
-                                </a>
-                            </li>
+                    <li class="menu-header small text-uppercase">
+                    <span class="menu-header-text">Səhifə Modellər</span>
+                    </li>
 
-                            <li class="menu-item">
-                                <a asp-controller="About" asp-action="Index" class="menu-link">
-                                    <div>Haqqımızda</div>
-                                </a>
-                            </li>
+                    <li class="menu-item">
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-layout"></i>
+                    <div data-i18n="Layouts">Səhifə Modellər</div>
+                    </a>
 
-                            <li class="menu-item">
-                                <a asp-controller="Prerequisite" asp-action="Index" class="menu-link">
-                                    <div>İlkin Tələbələr</div>
-                                </a>
-                            </li>
+                    <ul class="menu-sub">
 
-                            <li class="menu-item">
-                                <a asp-controller="Motivation" asp-action="Index" class="menu-link">
-                                    <div>Motivasiya məktubu</div>
-                                </a>
-                            </li>
+                    <li class="menu-item">
+                    <a asp-controller="Slider" asp-action="Index" class="menu-link">
+                    <div>Slaydlar</div>
+                    </a>
+                    </li>
 
-                        </ul>
+                    <li class="menu-item">
+                    <a asp-controller="About" asp-action="Index" class="menu-link">
+                    <div>Haqqımızda</div>
+                    </a>
+                    </li>
+
+                    <li class="menu-item">
+                    <a asp-controller="Prerequisite" asp-action="Index" class="menu-link">
+                    <div>İlkin Tələbələr</div>
+                    </a>
+                    </li>
+
+                    <li class="menu-item">
+                    <a asp-controller="Motivation" asp-action="Index" class="menu-link">
+                    <div>Motivasiya məktubu</div>
+                    </a>
+                    </li>
+
+                    </ul>
                     </li>
 
                     <!--Layouts-->
                     <li class="menu-header small text-uppercase">
-                        <span class="menu-header-text">Modellər haqqında</span>
+                    <span class="menu-header-text">Modellər haqqında</span>
                     </li>
 
                     <li class="menu-item">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle">
-                            <i class="menu-icon tf-icons bx bx-layout"></i>
-                            <div data-i18n="Layouts">Yardımcı Modellər</div>
-                        </a>
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-layout"></i>
+                    <div data-i18n="Layouts">Yardımcı Modellər</div>
+                    </a>
 
-                        <ul class="menu-sub">
+                    <ul class="menu-sub">
 
-                            <li class="menu-item">
-                                <a asp-controller="University" asp-action="Index" class="menu-link">
-                                    <div>Universitetlər</div>
-                                </a>
-                            </li>
-                           
-                        </ul>
+                    <li class="menu-item">
+                    <a asp-controller="University" asp-action="Index" class="menu-link">
+                    <div>Universitetlər</div>
+                    </a>
+                    </li>
+
+                    </ul>
                     </li>
 
                     <li class="menu-header small text-uppercase">
-                        <span class="menu-header-text">Sayt Adminləri və Rollar</span>
+                    <span class="menu-header-text">Sayt Adminləri və Rollar</span>
                     </li>
 
                     <li class="menu-item">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle">
-                            <i class="menu-icon tf-icons bx bx-layout"></i>
-                            <div data-i18n="Layouts">Adminlər və Rollar</div>
-                        </a>
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-layout"></i>
+                    <div data-i18n="Layouts">Adminlər və Rollar</div>
+                    </a>
 
-                        <ul class="menu-sub">
-                            <li class="menu-item">
-                                <a asp-controller="User" asp-action="Index" class="menu-link">
-                                    <i class="menu-icon tf-icons bx bx-user"></i>
-                                    <div>Sayt Adminlər</div>
-                                </a>
-                            </li>
+                    <ul class="menu-sub">
+                    <li class="menu-item">
+                    <a asp-controller="User" asp-action="Index" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-user"></i>
+                    <div>Sayt Adminlər</div>
+                    </a>
+                    </li>
 
-                            <li class="menu-item">
-                                <a asp-controller="Role" asp-action="Index" class="menu-link">
-                                    <i class='menu-icon tf-icons bx bxs-user-account'></i>
-                                    <div>Rollar</div>
-                                </a>
-                            </li>
-                        </ul>
+                    <li class="menu-item">
+                    <a asp-controller="Role" asp-action="Index" class="menu-link">
+                    <i class='menu-icon tf-icons bx bxs-user-account'></i>
+                    <div>Rollar</div>
+                    </a>
+                    </li>
+                    </ul>
                     </li>
 
                     <li class="menu-header small text-uppercase">
-                        <span class="menu-header-text">Əlaqə Modellər</span>
+                    <span class="menu-header-text">Əlaqə Modellər</span>
                     </li>
 
                     <li class="menu-item">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle">
-                            <i class="menu-icon tf-icons bx bx-layout"></i>
-                            <div data-i18n="Layouts">Əlaqə Modellər</div>
-                        </a>
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-layout"></i>
+                    <div data-i18n="Layouts">Əlaqə Modellər</div>
+                    </a>
 
-                        <ul class="menu-sub">
+                    <ul class="menu-sub">
 
-                            <li class="menu-item">
-                                <a asp-controller="Contact" asp-action="Index" class="menu-link"><div>Əlaqə</div> </a>
-                            </li>
-
-                            <li class="menu-item">
-                                <a asp-controller="Faq" asp-action="Index" class="menu-link"><div>Faq</div> </a>
-                            </li>
-
-                            <li class="menu-item">
-                                <a asp-controller="SocialMedia" asp-action="Index" class="menu-link"><div>Sosial Media</div></a>
-                            </li>
-
-                            <li class="menu-item">
-                                <a asp-controller="Subscribe" asp-action="Index" class="menu-link"><div>Abunələr</div></a>
-                            </li>
-
-                        </ul>
+                    <li class="menu-item">
+                    <a asp-controller="Contact" asp-action="Index" class="menu-link"><div>Əlaqə</div> </a>
                     </li>
 
+                    <li class="menu-item">
+                    <a asp-controller="Faq" asp-action="Index" class="menu-link"><div>Faq</div> </a>
+                    </li>
+
+                    <li class="menu-item">
+                    <a asp-controller="SocialMedia" asp-action="Index" class="menu-link"><div>Sosial Media</div></a>
+                    </li>
+
+                    <li class="menu-item">
+                    <a asp-controller="Subscribe" asp-action="Index" class="menu-link"><div>Abunələr</div></a>
+                    </li>
+
+                    </ul>
+                    </li>
+                    *@
 
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">Səhifəyə geri qayıt</span>
@@ -270,14 +265,14 @@
 
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
                             <!--User-->
-                           @*  <div class="dropdown">
-                                <a style="background-color:white;color:black;" class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Bahruz
-                                </a>
+                            @*  <div class="dropdown">
+                            <a style="background-color:white;color:black;" class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Bahruz
+                            </a>
 
-                                <ul class="dropdown-menu">
-                                    <li><a asp-area="default" asp-controller="Account" asp-action="Logout" class="dropdown-item">Çıxış Et</a></li>
-                                </ul>
+                            <ul class="dropdown-menu">
+                            <li><a asp-area="default" asp-controller="Account" asp-action="Logout" class="dropdown-item">Çıxış Et</a></li>
+                            </ul>
                             </div> *@
                             <!--User-->
                         </ul>

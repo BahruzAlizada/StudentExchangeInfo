@@ -35,10 +35,8 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Student\Data\" />
     <Folder Include="Areas\Student\Models\" />
-    <Folder Include="Areas\University\Controllers\" />
-    <Folder Include="Areas\University\Data\" />
-    <Folder Include="Areas\University\Models\" />
-    <Folder Include="Areas\University\Views\" />
+    <Folder Include="Areas\UniversityPanel\Data\" />
+    <Folder Include="Areas\UniversityPanel\Models\" />
     <Folder Include="wwwroot\assets\img\university\" />
     <Folder Include="wwwroot\assets\img\slider\" />
   </ItemGroup>
