@@ -1,0 +1,52 @@
+﻿@model StudentOtherInformationVM
+
+<div class="container py-4">
+    <div class="row">
+        <ul class="nav nav-pills flex-column flex-md-row mb-3">
+            <li class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-route-username="@ViewBag.username"><i class="bx bx-user me-1"></i> Profil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active " asp-action="OtherInformation"><i class='bx bxs-edit-alt'></i> Digər məlumatlar</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="ChangePassword"><i class='bx bxs-lock-open'></i> Şifrəni dəyiş</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="Logout"><i class='bx bx-power-off'></i> Çıxış et</a>
+            </li>
+
+        </ul>
+        <div class="col-12">
+
+            <div class="card mb-4">
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                <div class="card-body">
+                    <form method="post">
+
+                        <div class="mb-3 form-group">
+                            <label asp-for="UOMG" class="form-label">Tələbənin ümumi orta balı</label>
+                            <input asp-for="UOMG" type="number" class="form-control" />
+                            <span class="text-danger" asp-validation-for="UOMG"></span>
+                        </div>
+
+                        <div class="mb-3 form-group">
+                            <label class="form-label">Təhsil səviyyəsi:</label><br />
+                            <input asp-for="IsBacheolor" type="radio" value="true" />
+                            <label for="bachelor" class="form-label">Bakalavr</label><br />
+                            <input asp-for="IsBacheolor" type="radio" value="false" />
+                            <label for="master" class="form-label">Magistr</label>
+                        </div>                       
+
+                        <button type="submit" class="btn btn-success">Yenilə</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

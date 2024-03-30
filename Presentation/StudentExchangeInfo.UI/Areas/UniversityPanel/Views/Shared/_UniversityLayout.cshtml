@@ -46,6 +46,7 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="~/admin/assets/js/config.js"></script>
+    @RenderSection("Css",false)
 </head>
 
 <body>
@@ -73,14 +74,29 @@
                         </a>
                     </li>
 
-                    @* <li class="menu-item">
-                    <a asp-controller="Product" asp-action="Index" class="menu-link">
-                    <i class='menu-icon tf-icons bx bxl-product-hunt'></i>
-                    <div>Məhsullar</div>
-                    </a>
+                    <li class="menu-header small text-uppercase">
+                        <span class="menu-header-text">Tələbələr</span>
                     </li>
 
                     <li class="menu-item">
+                        <a asp-controller="UniversityStudents" asp-action="Index" class="menu-link">
+                            <i class='menu-icon tf-icons bx bxl-stripe'></i>
+                            <div>Tələbələr</div>
+                        </a>
+                    </li>
+
+                    <li class="menu-header small text-uppercase">
+                        <span class="menu-header-text">Mübadilə Proqramları</span>
+                    </li>
+
+                    <li class="menu-item">
+                        <a asp-controller="ExchangeProgram" asp-action="Index" class="menu-link">
+                            <i class='menu-icon tf-icons bx bxs-plane-take-off'></i>
+                            <div>Mübadilə Proqramları</div>
+                        </a>
+                    </li>
+
+                    @*<li class="menu-item">
                     <a asp-controller="Customer" asp-action="Index" class="menu-link">
                     <i class='menu-icon tf-icons bx bxl-medium-square'></i>
                     <div>Müştərilər</div>

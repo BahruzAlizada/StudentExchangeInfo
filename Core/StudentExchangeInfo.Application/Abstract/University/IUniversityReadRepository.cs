@@ -15,5 +15,7 @@ namespace StudentExchangeInfo.Application.Abstract
 
         Task<List<University>> GetUniversitiesWithPageCountAsync(int take, int page);
         Task<double> UniversitiesPageCountAsync(double take);
+
+        Task<List<University>> GetActiveRegisteredTakedUniversitiesAsync(int take);
     }
 }

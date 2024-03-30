@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using StudentExchangeInfo.Application.Abstract;
 using StudentExchangeInfo.Application.ViewModels;
+using StudentExchangeInfo.Application.ViewModels.Student;
 using StudentExchangeInfo.Domain.Entities;
 using StudentExchangeInfo.Domain.Identity;
 using StudentExchangeInfo.Persistence.Concrete;
@@ -125,12 +127,36 @@ namespace StudentExchangeInfo.UI.Areas.UniversityPanel.Controllers
         #endregion
 
         #region UniversityStudents
-        public async Task<IActionResult> UniversityStudents()
+        public async Task<IActionResult> UniversityStudents(int page = 1)
         {
             using var context = new Context();
 
+            double take = 20;
 
-            return View();
+
+            AppUser? user = await userManager.FindByNameAsync(User.Identity.Name);
+            if (user == null) return BadRequest();
+
+            University university = await universityReadRepository.FindUniversityByNameAsync(user.Name);
+            List<AppUser> users = await userManager.Users.Include(x => x.University).Where(x => x.UniversityId == university.Id && x.Status).
+                OrderByDescending(x=>x.Id).ToListAsync();
+            List<StudentVM> studentVMs = new List<StudentVM>();
+
+            foreach (var item in users)
+            {
+                StudentVM vm = new StudentVM
+                {
+                    Id = item.Id,
+                    Name = item.Name,
+                    Surname = item.Surname,
+                    Email = item.Email,
+                    Created = item.Created,
+                };
+                studentVMs.Add(vm);
+            }
+            
+
+            return View(studentVMs);
         }
         #endregion
 

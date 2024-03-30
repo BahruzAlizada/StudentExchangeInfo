@@ -21,5 +21,8 @@ namespace StudentExchangeInfo.Persistence.Concrete
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Prerequisite> Prerequisites { get; set; }
         public DbSet<Motivation> Motivations { get; set; }
+        public DbSet<ExchangeProgram> ExchangePrograms { get; set; }
+        public DbSet<ExchangeProgramCondition> ExchangeProgramConditions { get; set; }
+        public DbSet<ExchangeProgramDocument> ExchangeProgramDocuments { get; set; }
     }
 }

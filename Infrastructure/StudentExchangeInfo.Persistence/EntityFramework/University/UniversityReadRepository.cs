@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Caching.Memory;
 using StudentExchangeInfo.Application.Abstract;
 using StudentExchangeInfo.Domain.Entities;
@@ -29,7 +30,7 @@ namespace StudentExchangeInfo.Persistence.EntityFramework
             using var context = new Context();
 
             University university = await context.Universities.Include(x=>x.Users).FirstOrDefaultAsync(x => x.Name == name);
-            int count = university.Users.Count();
+            int count = university.Users.Where(x=>x.Status).Count();
             return count;
         }
 
@@ -63,7 +64,16 @@ namespace StudentExchangeInfo.Persistence.EntityFramework
             return universities;
 		}
 
-		public async Task<List<University>> GetActiveUniversitiesAsync()
+        public async Task<List<University>> GetActiveRegisteredTakedUniversitiesAsync(int take)
+        {
+            using var context = new Context();
+
+            List<University> universities = await context.Universities.Where(x=>x.IsRegistred && x.Status).OrderByDescending(x=>x.Id).
+                Take(take).ToListAsync();
+            return universities;
+        }
+
+        public async Task<List<University>> GetActiveUniversitiesAsync()
         {
             using var context = new Context();
 

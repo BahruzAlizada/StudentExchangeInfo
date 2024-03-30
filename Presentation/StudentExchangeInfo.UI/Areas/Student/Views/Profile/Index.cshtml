@@ -7,6 +7,9 @@
                 <a class="nav-link active" asp-action="Index"asp-route-username="@Model.Username"><i class="bx bx-user me-1"></i> Profil</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" asp-action="OtherInformation"><i class='bx bxs-edit-alt'></i> Digər məlumatlar</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" asp-action="ChangePassword"><i class='bx bxs-lock-open'></i> Şifrəni dəyiş</a>
             </li>
             <li class="nav-item">
@@ -17,8 +20,9 @@
         <div class="card mb-4">
             <!-- Account -->
             <div class="card-body">
-                <h6>@Model.Name @Model.Surname</h6>
-                <p style="margin-top:-8px;">@ViewBag.UniName</p>
+                <h5>@Model.Name @Model.Surname</h5>
+                <img src="~/assets/img//university/@Model.Uniİmage" class="d-block rounded" height="100" width="100" />
+                <p style="margin-top:-3px;">@ViewBag.UniName</p>
             </div>
             <hr class="my-0" />
             <span>Hesabı yenilədkidən sonra hesabdan çıxış ediləcəkdir.</span>

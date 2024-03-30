@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StudentExchangeInfo.Persistence.Concrete;
 
@@ -11,9 +12,11 @@ using StudentExchangeInfo.Persistence.Concrete;
 namespace StudentExchangeInfo.Persistence.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240328204415_AddIsBacheolorToAspNetUsersTable")]
+    partial class AddIsBacheolorToAspNetUsersTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -178,85 +181,6 @@ namespace StudentExchangeInfo.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Contacts");
-                });
-
-            modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.ExchangeProgram", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("AppUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ExchangeName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AppUserId");
-
-                    b.ToTable("ExchangePrograms");
-                });
-
-            modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.ExchangeProgramCondition", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Condition")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ExchangeProgramId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ExchangeProgramId");
-
-                    b.ToTable("ExchangeProgramConditions");
-                });
-
-            modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.ExchangeProgramDocument", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Document")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ExchangeProgramId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ExchangeProgramId");
-
-                    b.ToTable("ExchangeProgramDocuments");
                 });
 
             modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.Faq", b =>
@@ -530,9 +454,6 @@ namespace StudentExchangeInfo.Persistence.Migrations
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
-                    b.Property<double?>("UOMG")
-                        .HasColumnType("float");
-
                     b.Property<int?>("UniversityId")
                         .HasColumnType("int");
 
@@ -610,39 +531,6 @@ namespace StudentExchangeInfo.Persistence.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.ExchangeProgram", b =>
-                {
-                    b.HasOne("StudentExchangeInfo.Domain.Identity.AppUser", "AppUser")
-                        .WithMany("ExchangePrograms")
-                        .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AppUser");
-                });
-
-            modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.ExchangeProgramCondition", b =>
-                {
-                    b.HasOne("StudentExchangeInfo.Domain.Entities.ExchangeProgram", "ExchangeProgram")
-                        .WithMany("Conditions")
-                        .HasForeignKey("ExchangeProgramId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ExchangeProgram");
-                });
-
-            modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.ExchangeProgramDocument", b =>
-                {
-                    b.HasOne("StudentExchangeInfo.Domain.Entities.ExchangeProgram", "ExchangeProgram")
-                        .WithMany("Documents")
-                        .HasForeignKey("ExchangeProgramId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ExchangeProgram");
-                });
-
             modelBuilder.Entity("StudentExchangeInfo.Domain.Identity.AppUser", b =>
                 {
                     b.HasOne("StudentExchangeInfo.Domain.Entities.University", "University")
@@ -652,21 +540,9 @@ namespace StudentExchangeInfo.Persistence.Migrations
                     b.Navigation("University");
                 });
 
-            modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.ExchangeProgram", b =>
-                {
-                    b.Navigation("Conditions");
-
-                    b.Navigation("Documents");
-                });
-
             modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.University", b =>
                 {
                     b.Navigation("Users");
-                });
-
-            modelBuilder.Entity("StudentExchangeInfo.Domain.Identity.AppUser", b =>
-                {
-                    b.Navigation("ExchangePrograms");
                 });
 #pragma warning restore 612, 618
         }

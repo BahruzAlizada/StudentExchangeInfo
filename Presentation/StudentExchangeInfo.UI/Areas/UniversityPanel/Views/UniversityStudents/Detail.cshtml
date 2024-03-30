@@ -1,0 +1,153 @@
+﻿@model StudentOtherInformationVM
+
+@* <h4>@Model.FullName</h4>
+<p>Tələbənin Təhsil aldığı universitet - @Model.UniName</p>
+<p>Tələbənin təhsil səviyyəsi - @if(Model.IsBacheolor==true)
+	{
+		<span>Bakalavr</span>	
+	}
+	else
+	{
+		<span>Magistr</span>
+	}
+</p>
+<p>Tələbənin Ümumi orta balı - @Model.UOMG</p>
+
+<a class="btn btn-secondary" asp-action="Index">Geri qayıt</a>
+ *@
+
+ @section Css{
+     <style>
+         html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+
+.container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.card {
+  padding: 1em;
+  border-radius: 0.8em;
+  background-color: #fefefe;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.035),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.042), 0 41.8px 33.4px rgba(0, 0, 0, 0.05),
+    0 100px 80px rgba(0, 0, 0, 0.07);
+  position: relative;
+}
+
+.card:after {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: var(--small-green-circle);
+  top: 25px;
+  right: 96px;
+  border: 2px solid white;
+}
+
+
+.card__info {
+  margin: 1em 0;
+  list-style-type: none;
+  padding: 0;
+}
+
+.card__info li {
+  display: inline-block;
+  text-align: center;
+  padding: 0.5em;
+}
+
+.card__info__stats {
+  color: var(--main-accent-color);
+  font-weight: bold;
+  font-size: 1.2em;
+  display: block;
+}
+
+
+.card__text h2 {
+  margin-bottom: 0.3em;
+  font-size: 1.4em;
+  color: #6f6f6f;
+}
+
+.card__text p {
+  margin: 0;
+  color: #999;
+  font-size: 0.95em;
+}
+
+.card__action {
+  display: flex;
+  justify-content: space-around;
+}
+
+
+@@media (min-width: 425px) {
+  .card {
+    padding: 3em;
+  }
+
+  .card:after {
+    top: 50px;
+    right: 160px;
+  }
+
+  .card__info li {
+    padding: 1em;
+  }
+}
+     </style>
+ }
+
+<main class="container">
+    <div class="card">
+        <div class="card__text">
+            <h2>@Model.FullName
+            <br />
+            <span style="font-size:14px;">@Model.Email</span><hr /></h2>
+            <p style="color:black;">@Model.UniName</p>
+        </div>
+        <ul class="card__info">
+            <li>
+                @if (Model.IsBacheolor == true)
+                {
+                    <span class="card__info__stats">Bakalavr</span>
+                }
+                else
+                {
+                    <span class="card__info__stats">Magistr</span>
+                }
+                <span>Təhsil səviyyəsi</span>
+            </li>
+            <li>
+                <span class="card__info__stats">@Model.UOMG</span>
+                <span>Ümumi Orta Bal</span>
+            </li>
+           @*  <li>
+                <span class="card__info__stats">@Model.UniName</span>
+                <span>Təhsil aldığı universitet</span>
+            </li> *@
+        </ul>
+        <div class="card__action">
+            <a class="btn btn-secondary" asp-action="Index">Geri qayıt</a>
+        </div>
+    </div>
+</main>

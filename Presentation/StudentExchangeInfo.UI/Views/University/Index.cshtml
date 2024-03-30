@@ -1,0 +1,45 @@
+﻿@model List<University>
+
+@{
+    ViewBag.Title = "Universitetlər";
+}
+
+
+<!-- Hero Area Start-->
+<div class="slider-area ">
+    <div class="single-slider slider-height2 d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap text-center">
+                        <h2>Universitetlər</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Hero Area End-->
+
+<!-- University Start -->
+<div class="about-details section-padding30">
+    <div class="container">
+        <div class="row">
+            <div class="offset-xl-1 col-lg-12">
+                <div class="about-details-cap mb-50">
+                    <h5>Qeydiyyatdan keçərək portalımızdan istifadə edən univeritetlərin siyahısını təqdim edirik.<br /></h5>
+                    <div style="display:flex;">
+                        @foreach (var item in Model)
+                        {
+                            <div class="mx-3 my-3">
+                                <img src="~/assets/img//university/@item.Image" class="d-block rounded" height="100" width="100" />
+                                <p>@item.Name</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- University End -->

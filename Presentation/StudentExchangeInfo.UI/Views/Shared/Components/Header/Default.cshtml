@@ -10,12 +10,9 @@
         <div class="main-menu d-none d-lg-block">
             <nav>
                 <ul id="navigation">
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        
-                    }
                     <li><a asp-controller="Home" asp-action="Index">Ana Səhifə</a></li>
                     <li><a asp-controller="About" asp-action="Index">Haqqımızda</a></li>
+                    <li><a asp-controller="University" asp-action="Index">Universitetlər</a></li>
                     <li>
                         <a href="#">İlkin Tələblər</a>
                         <ul class="submenu">

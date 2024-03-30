@@ -28,16 +28,17 @@ namespace StudentExchangeInfo.UI.Areas.Student.Controllers
             AppUser? user = await userManager.FindByNameAsync(User.Identity.Name);
             if (user == null) return BadRequest();
 
+            University university = await universityReadRepository.GetAsync(x => x.Id == user.UniversityId);
+            ViewBag.UniName = university.Name;
+
             StudentVM dbVm = new StudentVM
             {
                 Name = user.Name,
                 Surname = user.Surname,
                 Email = user.Email,
                 Username = user.UserName,
+                Uniİmage = university.Image
             };
-
-            University university = await universityReadRepository.GetAsync(x => x.Id == user.UniversityId);
-            ViewBag.UniName = university.Name;  
 
             return View(dbVm);
         }
@@ -50,16 +51,17 @@ namespace StudentExchangeInfo.UI.Areas.Student.Controllers
             AppUser? user = await userManager.FindByNameAsync(User.Identity.Name);
             if (user == null) return BadRequest();
 
+            University university = await universityReadRepository.GetAsync(x => x.Id == user.UniversityId);
+            ViewBag.UniName = university.Name;
+
             StudentVM dbVm = new StudentVM
             {
                 Name = user.Name,
                 Surname = user.Surname,
                 Email = user.Email,
                 Username = user.UserName,
+                Uniİmage = university.Image
             };
-
-            University university = await universityReadRepository.GetAsync(x => x.Id == user.UniversityId);
-            ViewBag.UniName = university.Name;
 
             dbVm.Name = vm.Name;
             dbVm.Surname = vm.Surname;
@@ -74,6 +76,59 @@ namespace StudentExchangeInfo.UI.Areas.Student.Controllers
             await userManager.UpdateAsync(user);
             await signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home", new { area="default"});
+        }
+        #endregion
+
+        #region OtherInformation
+        public async Task<IActionResult> OtherInformation()
+        {
+            AppUser? user = await userManager.FindByNameAsync(User.Identity.Name);
+            if (user == null) return BadRequest();
+
+            ViewBag.username = user.UserName;
+
+            StudentOtherInformationVM dbVm = new StudentOtherInformationVM
+            {
+                FullName = user.Name + user.Surname,
+                UOMG = user.UOMG,
+                IsBacheolor = user.IsBacheolor
+            };
+
+            return View(dbVm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public async Task<IActionResult> OtherInformation(StudentOtherInformationVM vm)
+        {
+            AppUser? user = await userManager.FindByNameAsync(User.Identity.Name);
+            if (user == null) return BadRequest();
+
+            ViewBag.username = user.UserName;
+
+            StudentOtherInformationVM dbVm = new StudentOtherInformationVM
+            {
+                FullName = user.Name + user.Surname,
+                UOMG = user.UOMG,
+                IsBacheolor = user.IsBacheolor
+            };
+
+
+            if (vm.UOMG > 100)
+            {
+                ModelState.AddModelError("UOMG", "Zəhmət olmasa UOMG düzgün daxil edin");
+                return View();
+            }
+
+            dbVm.UOMG = vm.UOMG;
+            dbVm.IsBacheolor = vm.IsBacheolor;
+
+            user.UOMG = vm.UOMG;
+            user.IsBacheolor = vm.IsBacheolor;
+
+            await userManager.UpdateAsync(user);
+            return RedirectToAction("Index");
         }
         #endregion
 

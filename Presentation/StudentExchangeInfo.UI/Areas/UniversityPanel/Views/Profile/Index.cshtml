@@ -19,7 +19,7 @@
             <div class="card-body">
                 <img src="~/assets/img//university/@Model.Image" class="d-block rounded" height="100" width="100" />
                 <h5 style="margin-top:10px;">@Model.Name</h5>
-                <span style="font-size:14px;margin-top:-7px;">Tələbələrin sayı - @Model.StudentCount (<a style="color:red;text-decoration:underline">Tələbələri gör</a>)</span>
+                <span style="font-size:14px;margin-top:-11px;">Tələbələrin sayı - @Model.StudentCount (<a style="color:red;text-decoration:underline" asp-controller="UniversityStudents" asp-action="Index">Tələbələri gör</a>)</span>
             </div>
             <hr class="my-0" />
             <span style="margin-left:15px;">Hesabı yenilədkidən sonra hesabdan çıxış ediləcəkdir.</span><hr />

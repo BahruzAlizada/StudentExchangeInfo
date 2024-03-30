@@ -13,5 +13,6 @@ namespace StudentExchangeInfo.Application.ViewModels.Student
         public DateTime Created { get; set; }
         public int? UniId { get; set; }
         public string UniverName { get; set; }
+        public string Uniİmage { get; set; }
     }
 }

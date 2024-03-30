@@ -1,0 +1,24 @@
+﻿@model List<ExchangeProgram>
+
+<div class="card mb-4">
+    <!-- Account -->
+    <div class="card-body">
+        <img src="~/assets/img//university/@ViewBag.Image" class="d-block rounded" height="100" width="100" />
+        <h5 style="margin-top:10px;">@ViewBag.Name</h5>
+    </div>
+    <hr class="my-0" />
+    <div class="card-body">
+        @if (Model.Count == 0)
+        {
+            <a asp-action="Create" class="btn btn-success my-2">Əlavə et</a>
+            <p>Hal-hazırda heç bir mübadilə proqramı mövcud deyil.</p>
+        }
+        else
+        {
+            
+        }
+    </div>
+
+    <!-- /Account -->
+</div>
+
