@@ -10,9 +10,12 @@ namespace StudentExchangeInfo.Domain.Entities
         [Required(ErrorMessage = "Bu xana boş ola bilməz")]
         public string ExchangeName { get; set; }
         public string Description { get; set; }
+        [Required(ErrorMessage = "Bu xana boş ola bilməz")]
+        public string Condition { get; set; }
+        [Required(ErrorMessage = "Bu xana boş ola bilməz")]
+        public string Document { get; set; }
 
         public AppUser AppUser { get; set; }
-        public List<ExchangeProgramCondition> Conditions { get; set; }
-        public List<ExchangeProgramDocument> Documents { get; set; }
+
     }
 }

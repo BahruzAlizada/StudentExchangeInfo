@@ -1,0 +1,74 @@
+﻿@model ExchangeProgram
+
+
+<div class="row">
+    <div class="col-8">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Mübadilə Proqramı</h5>
+            </div>
+            <div class="card-body">
+                <form method="post">
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="ExchangeName" class="form-label">Mübadilə Proqramınnın adı</label>
+                        <input asp-for="ExchangeName" class="form-control" />
+                        <span asp-validation-for="ExchangeName" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="Description" class="form-label">Mübadilə Proqramı haqqında</label>
+                        <textarea asp-for="Description" id="editor" class="form-control"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="Condition" class="form-label">Mübadilə Proqramı şərt və tələblər</label>
+                        <textarea asp-for="Condition" id="editor1" class="form-control"></textarea>
+                        <span asp-validation-for="Condition" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="Document" class="form-label">Mübadilə Proqramı sənədlər</label>
+                        <textarea asp-for="Document" id="editor2" class="form-control"></textarea>
+                        <span asp-validation-for="Document" class="text-danger"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Yarat</button>
+                    <a asp-action="Index" class="btn btn-secondary">Geri qayıt</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor1'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor2'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+}

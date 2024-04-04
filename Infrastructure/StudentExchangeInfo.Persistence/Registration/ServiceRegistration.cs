@@ -37,6 +37,8 @@ namespace StudentExchangeInfo.Persistence.Registration
 
             services.AddScoped<IExchangeProgramReadRepository, ExchangeProgramReadRepository>();
             services.AddScoped<IExchangeProgramWriteRepository, ExchangeProgramWriteRepository>();
+
+            
         }
     }
 }

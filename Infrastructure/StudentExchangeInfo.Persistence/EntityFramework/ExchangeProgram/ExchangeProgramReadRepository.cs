@@ -16,5 +16,15 @@ namespace StudentExchangeInfo.Persistence.EntityFramework
                 Where(x => x.Status && x.AppUserId == id).OrderByDescending(x => x.Id).ToListAsync();
             return exchangePrograms;
         }
+
+
+        public async Task<List<ExchangeProgram>> GetExchangeProgramsByUniversityAsync(int id)
+        {
+            using var context = new Context();
+
+            List<ExchangeProgram> exchangePrograms = await context.ExchangePrograms.Include(x => x.AppUser).
+                Where(x => x.AppUserId == id).OrderByDescending(x => x.Id).ToListAsync();
+            return exchangePrograms;
+        }
     }
 }

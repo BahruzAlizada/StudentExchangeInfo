@@ -5,5 +5,6 @@ namespace StudentExchangeInfo.Application.Abstract
 {
     public interface IExchangeProgramWriteRepository : IWriteRepository<ExchangeProgram>
     {
+        void Activity(ExchangeProgram exchangeProgram);
     }
 }

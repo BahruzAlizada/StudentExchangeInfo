@@ -142,7 +142,7 @@ namespace StudentExchangeInfo.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("About");
+                    b.ToTable("About", (string)null);
                 });
 
             modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.Contact", b =>
@@ -177,7 +177,7 @@ namespace StudentExchangeInfo.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Contacts");
+                    b.ToTable("Contacts", (string)null);
                 });
 
             modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.ExchangeProgram", b =>
@@ -206,7 +206,7 @@ namespace StudentExchangeInfo.Persistence.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("ExchangePrograms");
+                    b.ToTable("ExchangePrograms", (string)null);
                 });
 
             modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.ExchangeProgramCondition", b =>
@@ -231,7 +231,7 @@ namespace StudentExchangeInfo.Persistence.Migrations
 
                     b.HasIndex("ExchangeProgramId");
 
-                    b.ToTable("ExchangeProgramConditions");
+                    b.ToTable("ExchangeProgramConditions", (string)null);
                 });
 
             modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.ExchangeProgramDocument", b =>
@@ -256,7 +256,7 @@ namespace StudentExchangeInfo.Persistence.Migrations
 
                     b.HasIndex("ExchangeProgramId");
 
-                    b.ToTable("ExchangeProgramDocuments");
+                    b.ToTable("ExchangeProgramDocuments", (string)null);
                 });
 
             modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.Faq", b =>
@@ -280,7 +280,7 @@ namespace StudentExchangeInfo.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Faqs");
+                    b.ToTable("Faqs", (string)null);
                 });
 
             modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.Motivation", b =>
@@ -304,7 +304,7 @@ namespace StudentExchangeInfo.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Motivations");
+                    b.ToTable("Motivations", (string)null);
                 });
 
             modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.Prerequisite", b =>
@@ -324,7 +324,7 @@ namespace StudentExchangeInfo.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Prerequisites");
+                    b.ToTable("Prerequisites", (string)null);
                 });
 
             modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.Slider", b =>
@@ -352,7 +352,7 @@ namespace StudentExchangeInfo.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Sliders");
+                    b.ToTable("Sliders", (string)null);
                 });
 
             modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.SocialMedia", b =>
@@ -376,7 +376,7 @@ namespace StudentExchangeInfo.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SocialMedias");
+                    b.ToTable("SocialMedias", (string)null);
                 });
 
             modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.Subscribe", b =>
@@ -399,7 +399,7 @@ namespace StudentExchangeInfo.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Subscribes");
+                    b.ToTable("Subscribes", (string)null);
                 });
 
             modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.University", b =>
@@ -426,7 +426,7 @@ namespace StudentExchangeInfo.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Universities");
+                    b.ToTable("Universities", (string)null);
                 });
 
             modelBuilder.Entity("StudentExchangeInfo.Domain.Identity.AppRole", b =>

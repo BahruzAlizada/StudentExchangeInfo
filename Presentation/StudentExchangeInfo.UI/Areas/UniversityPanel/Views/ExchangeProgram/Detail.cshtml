@@ -1,0 +1,11 @@
+﻿@model ExchangeProgram
+
+<div class="row">
+	<div class="col-10">
+		<h3>@Model.ExchangeName mübadilə proqramı</h3>
+		<p>@Html.Raw(Model.Description)</p>
+		<p>@Html.Raw(Model.Condition)</p>
+		<p>@Html.Raw(Model.Document)</p>
+		<a asp-action="Index" class="btn btn-secondary">Geri qayıt</a>
+	</div>
+</div>
