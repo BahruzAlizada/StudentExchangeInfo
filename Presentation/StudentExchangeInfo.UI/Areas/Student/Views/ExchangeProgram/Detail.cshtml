@@ -1,0 +1,20 @@
+﻿@model ExchangeProgram
+
+<div class="row">
+    <div class="card mb-4">
+        <div class="card-body">
+            <img src="~/assets/img//university/@ViewBag.Image" class="d-block rounded" height="100" width="100" />
+            <h5 style="margin-top:10px;">@Model.AppUser.Name</h5>
+        </div>
+        <hr class="my-0" />
+        <div class="row">
+            <div class="col-10">
+                <h3>@Model.ExchangeName mübadilə proqramı</h3>
+                <p>@Html.Raw(Model.Description)</p>
+                <p>@Html.Raw(Model.Condition)</p>
+                <p>@Html.Raw(Model.Document)</p>
+                <a asp-action="Index" class="btn btn-secondary">Geri qayıt</a>
+            </div>
+        </div>
+    </div>
+</div>

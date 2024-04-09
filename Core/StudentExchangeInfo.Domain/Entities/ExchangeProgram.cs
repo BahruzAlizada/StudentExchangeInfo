@@ -16,6 +16,5 @@ namespace StudentExchangeInfo.Domain.Entities
         public string Document { get; set; }
 
         public AppUser AppUser { get; set; }
-
     }
 }

@@ -57,7 +57,7 @@
 </div>
 <!--? Hero Area End-->
 
-<div class="container">
+@* <div class="container">
     <div class="row">
 
         <div class="col-12" style="padding:30px 0px;">
@@ -80,7 +80,36 @@
         </div>
 
     </div>
+</div> *@
+
+<div class="popular-items section-padding30">
+    <div class="container">
+        <!-- Section tittle -->
+        <div class="row justify-content-center">
+            <div class="col-xl-7 col-lg-8 col-md-10">
+                <div class="section-tittle mb-70 text-center">
+                    <h2>Ən çox verilən suallar</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12" style="padding-bottom:30px;">
+                @foreach (Faq faq in Model)
+                {
+                    <div style="padding:12px 3px;">
+                        <button class="accordion">@number. @faq.Quetsion</button>
+                        <div class="panel">
+                            <p>@Html.Raw(faq.Answer)</p>
+                        </div>
+                    </div>
+
+                    number++;
+                }
+            </div>
+        </div>
+    </div>
 </div>
+
 
 @section Scripts {
     <script>

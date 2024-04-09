@@ -22,7 +22,6 @@ namespace StudentExchangeInfo.UI.Areas.Admin.Controllers
             ViewBag.PageCount = await subscribeReadRepository.PageCountSubscribeAsync(take);
             ViewBag.CurrentPage = page;
 
-            ViewBag.SubscribeCount = await subscribeReadRepository.GetCountAsync();
             List<Subscribe> subscribes = await subscribeReadRepository.GetSubscribesWithPagingAsync((int)take, page);
             return View(subscribes);
         }

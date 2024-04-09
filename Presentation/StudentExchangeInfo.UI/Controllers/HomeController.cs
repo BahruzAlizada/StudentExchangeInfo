@@ -10,18 +10,25 @@ namespace StudentExchangeInfo.UI.Controllers
     public class HomeController : Controller
     {
         private readonly ISliderReadRepository sliderReadRepository;
+        private readonly IUniversityReadRepository universityReadRepository;
+        private readonly IFaqReadRepository faqReadRepository;
 
-        public HomeController(ISliderReadRepository sliderReadRepository)
+        public HomeController(ISliderReadRepository sliderReadRepository, IUniversityReadRepository universityReadRepository,
+            IFaqReadRepository faqReadRepository)
         {
             this.sliderReadRepository = sliderReadRepository;
+            this.universityReadRepository = universityReadRepository;
+            this.faqReadRepository = faqReadRepository;
         }
 
         #region Index
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             HomeVM homeVM = new HomeVM
             {
-                Sliders = sliderReadRepository.GetAll()
+                Sliders = await sliderReadRepository.GetAllAsync(),
+                Universities = await universityReadRepository.GetActiveRegisteredTakedUniversitiesAsync(3),
+                Faqs = await faqReadRepository.GetActiveFaqsTakeAsync(3)
             };
             return View(homeVM);
         }

@@ -5,5 +5,6 @@ namespace StudentExchangeInfo.Application.Abstract
 {
     public interface IFaqReadRepository : IReadRepository<Faq>
     {
+        Task<List<Faq>> GetActiveFaqsTakeAsync(int take);
     }
 }
