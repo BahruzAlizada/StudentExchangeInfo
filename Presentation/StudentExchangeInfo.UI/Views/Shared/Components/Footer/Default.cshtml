@@ -1,4 +1,5 @@
 ﻿
+
 <div class="row d-flex justify-content-between">
 
     <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
@@ -10,8 +11,9 @@
                 </div>
                 <div class="footer-tittle" style="margin-top:-50px;">
                     <div class="footer-pera">
-                        <p style="margin-top:80px;">
-                            Asorem ipsum adipolor sdit amet, consectetur adipisicing elitcf sed do eiusmod tem.
+                        <p style="margin-top:80px; font-size:15px;">
+                            Mübadilə proqramları ilə bağlı tələbə və universitetlər arasında məlumatlandırmanı 
+                            asanlaşdırmaq məqsədi ilə hazırlanmışdır.
                         </p>
                     </div>
                     <div class="footer-copy-right f-right">
@@ -37,21 +39,33 @@
         </div>
     </div>
 
-    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+    <div class="col-xl-2 col-lg-3 col-md-3 col-sm-5">
+        <div class="single-footer-caption mb-50">
+            <div class="footer-tittle">
+                <h4>Qeydiyyat</h4>
+                <ul>
+                    <li><a asp-controller="Home" asp-action="Index">Universitet qeydiyyatı</a></li>
+                    <li><a asp-controller="About" asp-action="Index">Tələbə qeydiyyatı</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-2 col-lg-3 col-md-3 col-sm-5">
         <div class="subscribe_part" style="background:none;">
 
         <div class="footer-tittle">
             <h4>Abunə ol</h4>
-            <p style="color:black;">Yeniliklərdən ilk sən xəbərdar olmaq istəyirsənsə abunə ol.</p>
+            <p style="color:black;"><a asp-controller="Home" asp-action="Subscribe" class="btn_1" style="border-radius:16px; padding:6px;">Bizə abunə ol</a></p>
             <p></p>
-            <div class="subscribe_form">
-                <input style="color:black;" type="email" placeholder="Email ünvanınızı daxil edin">
-                <a id="subBtn" class="btn_1">Abunə ol</a>
-            </div>
-            <div id="error" class="text-danger"></div>
+           
         </div>
 
         </div>
     </div>
 
 </div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

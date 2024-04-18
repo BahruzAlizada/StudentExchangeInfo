@@ -1,0 +1,43 @@
+﻿@model Subscribe
+
+
+@{
+    ViewBag.Title = "Abunə ol";
+}
+
+<!--? Hero Area Start-->
+<div class="slider-area ">
+    <div class="single-slider slider-height2 d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap text-center">
+                        <h2>Abunə ol</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--? Hero Area End-->
+<!-- subscribe part here -->
+<section class="subscribe_part section_padding" style="margin-top:80px;margin-bottom:80px;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="subscribe_part_content">
+                    <h2>Abunə ol!</h2>
+                    <p>Yeniliklərdən ilk sən xəbərdar olmaq istəyirsənsə elektron-poçt adresini daxil edərək abunə ol.</p>
+                    <form method="post">
+                        <div class="subscribe_form">
+                            <input asp-for="Email" placeholder="Elektron poçt">
+                            <span class="text-danger" asp-validation-for="Email"></span>
+                            <button type="submit" class="btn_1">Abunə ol</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- subscribe part end -->

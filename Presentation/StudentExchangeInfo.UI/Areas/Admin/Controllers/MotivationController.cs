@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using StudentExchangeInfo.Application.Abstract;
 using StudentExchangeInfo.Domain.Entities;
 using StudentExchangeInfo.Persistence.EntityFramework;
@@ -6,7 +7,8 @@ using StudentExchangeInfo.Persistence.EntityFramework;
 namespace StudentExchangeInfo.UI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class MotivationController : Controller
+	[Authorize(Roles = "SuperAdmin,Admin")]
+	public class MotivationController : Controller
     {
         private readonly IMotivationReadRepository motivationReadRepository;
         private readonly IMotivationWriteRepository motivationWriteRepository;

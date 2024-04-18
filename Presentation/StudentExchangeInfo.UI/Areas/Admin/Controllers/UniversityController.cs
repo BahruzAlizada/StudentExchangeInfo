@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using StudentExchangeInfo.Application.Abstract;
 using StudentExchangeInfo.Domain.Entities;
 using StudentExchangeInfo.Infrastructure.Helpers;
@@ -6,7 +7,8 @@ using StudentExchangeInfo.Infrastructure.Helpers;
 namespace StudentExchangeInfo.UI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class UniversityController : Controller
+	[Authorize(Roles = "SuperAdmin,Admin")]
+	public class UniversityController : Controller
     {
         private readonly IUniversityReadRepository universityReadRepository;
         private readonly IUniversityWriteRepository universityWriteRepository;

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using StudentExchangeInfo.Application.Abstract;
 using StudentExchangeInfo.Domain.Entities;
@@ -7,7 +8,8 @@ using StudentExchangeInfo.Domain.Identity;
 namespace StudentExchangeInfo.UI.Areas.UniversityPanel.Controllers
 {
     [Area("UniversityPanel")]
-    public class ExchangeProgramController : Controller
+	[Authorize(Roles = "University")]
+	public class ExchangeProgramController : Controller
     {
         private readonly UserManager<AppUser> userManager;
         private readonly IExchangeProgramReadRepository exchangeProgramReadRepository;

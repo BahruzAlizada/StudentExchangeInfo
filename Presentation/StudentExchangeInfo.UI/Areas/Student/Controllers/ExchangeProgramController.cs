@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StudentExchangeInfo.Application.Abstract;
@@ -9,6 +10,7 @@ using StudentExchangeInfo.Persistence.Concrete;
 namespace StudentExchangeInfo.UI.Areas.Student.Controllers
 {
     [Area("Student")]
+    [Authorize(Roles ="Student")]
     public class ExchangeProgramController : Controller
     {
         private readonly IExchangeProgramReadRepository exchangeProgramReadRepository;

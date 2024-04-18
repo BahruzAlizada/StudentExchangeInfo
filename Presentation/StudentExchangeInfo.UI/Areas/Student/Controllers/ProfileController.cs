@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StudentExchangeInfo.Application.Abstract;
@@ -10,6 +11,7 @@ using StudentExchangeInfo.Domain.Identity;
 namespace StudentExchangeInfo.UI.Areas.Student.Controllers
 {
 	[Area("Student")]
+    [Authorize(Roles ="Student")]
 	public class ProfileController : Controller
 	{
 		private readonly UserManager<AppUser> userManager;

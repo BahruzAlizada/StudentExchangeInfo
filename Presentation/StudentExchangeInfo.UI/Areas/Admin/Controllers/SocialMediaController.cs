@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using StudentExchangeInfo.Application.Abstract;
 using StudentExchangeInfo.Domain.Entities;
 
 namespace StudentExchangeInfo.UI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class SocialMediaController : Controller
+	[Authorize(Roles = "SuperAdmin,Admin,ContactManager")]
+	public class SocialMediaController : Controller
     {
         private readonly ISocialMediaReadRepository socialMediaReadRepository;
         private readonly ISocialMediaWriteRepository socialMediaWriteRepository;

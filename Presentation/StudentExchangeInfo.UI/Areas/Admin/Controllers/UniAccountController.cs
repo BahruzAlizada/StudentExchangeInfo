@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StudentExchangeInfo.Application.Abstract;
@@ -9,7 +10,8 @@ using StudentExchangeInfo.Domain.Identity;
 namespace StudentExchangeInfo.UI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class UniAccountController : Controller
+	[Authorize(Roles = "SuperAdmin,Admin")]
+	public class UniAccountController : Controller
     {
         private readonly UserManager<AppUser> userManager;
         private readonly RoleManager<AppRole> roleManager;

@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using StudentExchangeInfo.Application.Abstract;
 using StudentExchangeInfo.Domain.Entities;
 
 namespace StudentExchangeInfo.UI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class PrerequisiteController : Controller
+	[Authorize(Roles = "SuperAdmin,Admin")]
+	public class PrerequisiteController : Controller
     {
         private readonly IPrerequisiteReadRepository prerequisiteReadRepository;
         private readonly IPrerequisiteWriteRepository prerequisiteWriteRepository;

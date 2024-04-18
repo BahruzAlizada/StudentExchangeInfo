@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StudentExchangeInfo.Application.ViewModels;
@@ -8,7 +9,8 @@ using System.Data;
 namespace StudentExchangeInfo.UI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class RoleController : Controller
+	[Authorize(Roles = "SuperAdmin")]
+	public class RoleController : Controller
     {
         private readonly RoleManager<AppRole> roleManager;
         public RoleController(RoleManager<AppRole> roleManager)

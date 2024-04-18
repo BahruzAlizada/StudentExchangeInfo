@@ -42,10 +42,13 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+app.UseStatusCodePagesWithReExecute("/ErrorPage/Error404/", "?code={0}");
+
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
-app.UseAuthentication(); // Bax
+
 
 app.MapControllerRoute(
     name: "areas",

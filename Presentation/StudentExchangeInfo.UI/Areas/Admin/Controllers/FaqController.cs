@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using StudentExchangeInfo.Application.Abstract;
 using StudentExchangeInfo.Domain.Entities;
 
 namespace StudentExchangeInfo.UI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class FaqController : Controller
+	[Authorize(Roles = "SuperAdmin,Admin,ContactManager")]
+	public class FaqController : Controller
     {
         private readonly IFaqReadRepository faqReadRepository;
         private readonly IFaqWriteRepository faqWriteRepository;
