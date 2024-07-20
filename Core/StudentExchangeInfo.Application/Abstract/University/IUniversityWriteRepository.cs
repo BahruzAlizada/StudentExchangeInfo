@@ -7,5 +7,7 @@ namespace StudentExchangeInfo.Application.Abstract
     {
         void Activity(University university);
         Task RegisterChangedUniversity(University university);
+
+        void IsRegistred(University university);
     }
 }

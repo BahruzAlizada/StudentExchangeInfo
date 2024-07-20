@@ -46,15 +46,14 @@
 	<div class="slider-active">
 		@foreach (Slider item in Model.Sliders)
 		{
-            <div class="slider-item" style="background-image:url('/assets/img/slider/@item.Image');height:580px; background-repeat:no-repeat;background-size: cover;">
+            <div class="slider-item" style="background-image:url('/assets/img/slider/@item.Image');height:590px; background-repeat:no-repeat;background-size: cover; object-fit:cover;">
 				<div class="overlay"></div>
 				<div class="container">
 					<div class="row no-gutters slider-text align-items-center justify-content-center">
 						<div class="col-md-8 ftco-animate">
 							<div class="text w-100 text-center" style="text-align:center; justify-content:center;align-items:center; margin-top:200px;">
-								<h2>@item.Title</h2>
-								<h1 class="mb-4">@item.SubTitle</h1>
-								<p><a href="#" class="btn btn-white">Connect with us</a></p>
+								<h2 style="color:white; font-size:50px;">@item.Title</h2>
+								<h1 class="mb-4" style="color:white;font-size:60px;">@item.SubTitle</h1>
 							</div>
 						</div>
 					</div>
@@ -73,7 +72,7 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-8 col-md-10">
                         <div class="section-tittle mb-70 text-center">
-                            <h2>Universitetlər</h2>
+                            <h2>Tərəfdaş Universitetlər</h2>
                             <p>Bizimlə əməkdaşlıq edən universitetlərin siyahısı aşağıdakılardır.</p>
                         </div>
                     </div>
@@ -81,10 +80,10 @@
                 <div class="row">
                     @foreach(University university in Model.Universities)
                     {
-                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                         <div class="single-popular-items mb-50 text-center">
                             <div class="popular-img">
-                                <img style="height:289px; width:289px;" src="~/assets/img//university/@university.Image" alt="">
+                                <img style="height:220px; width:220px;" src="~/assets/img//university/@university.Image" alt="">
                                 @* <div class="img-cap">
                                     <span>Daha Ətraflı</span>
                                 </div> *@
@@ -97,7 +96,7 @@
                     }
                 </div>
                 <!-- Button -->
-                <div class="row justify-content-center">
+                <div class="row justify-content-center" style="margin-top:-65px;">
                     <div class="room-btn pt-60">
                         <a asp-controller="University" asp-action="Index" class="btn view-btn1 text-white">Daha Çox</a>
                     </div>
@@ -106,77 +105,60 @@
         </div>
 <!-- University End -->
 
-<!-- About  Start-->
-<div class="watch-area section-padding30">
+<!-- About Start-->
+<div class="about-details section-padding" style="margin-top:-15px;">
     <div class="container">
-        <div class="row align-items-center justify-content-between">
-            <div class="col-lg-5 col-md-6">
-                <div class="watch-details mb-40">
-                    <h2>Haqqımızda</h2>
-                    <p>"Studentexchange.info" portalı tələbələrə mübadilə proqramları barəsində daha ətraflı məlumat vermək üçün yaradılıb.</p>
-                    <a asp-controller="About" asp-action="Index" class="btn">Daha ətraflı</a>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-10">
-                <div class="choice-watch-img mb-40">
-                    <img style="object-fit:cover;" src="~/assets/img/gallery/sd.jpg" alt="">
-                </div>
-            </div>
-        </div>
-        <div class="row align-items-center justify-content-between">
-            <div class="col-lg-6 col-md-6 col-sm-10">
-                <div class="choice-watch-img mb-40">
-                    <img style="object-fit:cover;height:330px;width:300px;" src="~/assets/img/gallery/Pr.jpg" alt="">
-                </div>
-            </div>
-            <div class="col-lg-5 col-md-6">
-                <div class="watch-details mb-40">
-                    <h2>İlkin tələblər</h2>
-                    <p>Mübadilə proqramlarında iştirak etmək üçün tələbələrdən tələb olunan ilkin şərtlər ümumi orta balının yüksək olması və bil biliyinin olmasıdır.</p>
-                    <a asp-controller="Prerequisite" asp-action="Index" class="btn">Daha ətraflı</a>
+        <div class="row">
+            <div class="offset-xl-1 col-lg-10">
+                <div class="about-details-cap mb-50">
+                    <h4>Haqqımızda</h4>
+                    @Html.Raw(Model.About.Description)
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- About  End-->
+<!-- About End-->
 
-<!-- Faq Start -->
-<div style="margin-top:40px; margin-bottom:70px;" class="popular-items section">
+<!-- Blog Start -->
+<div style="margin-top:-35px;" class="popular-items section-padding20">
     <div class="container">
         <!-- Section tittle -->
         <div class="row justify-content-center">
             <div class="col-xl-7 col-lg-8 col-md-10">
                 <div class="section-tittle mb-70 text-center">
-                    <h2>Ən çox verilən suallar</h2>
+                    <h2>Xəbərlər</h2>
+                    <p>Bizimlə gündəmdə qalın.</p>
                 </div>
             </div>
         </div>
         <div class="row">
-           <div class="col-12" style="padding-bottom:30px;">
-                @foreach (Faq faq in Model.Faqs)
-                {
-                    <div style="padding:12px 3px;">
-                        <button class="accordion">@number. @faq.Quetsion</button>
-                        <div class="panel">
-                            <p>@Html.Raw(faq.Answer)</p>
+            @foreach (Blog blog in Model.Blogs)
+            {
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-popular-items mb-50 text-center">
+                        <div class="popular-img">
+                            <img style="height:250px; width:380px; object-fit:cover;" src="~/assets/img//blogs/@blog.Image" alt="">
+                            <div class="img-cap">
+                        <span>Daha Ətraflı</span>
+                        </div>
+                        </div>
+                        <div class="popular-caption">
+                            <h5 style="color:black;">@blog.Title</h5>
                         </div>
                     </div>
-
-                    number++;
-                }
-           </div>
+                </div>
+            }
         </div>
         <!-- Button -->
-        <div class="row justify-content-center">
+@*         <div class="row justify-content-center" style="margin-top:-65px;">
             <div class="room-btn pt-60">
-                <a asp-controller="Faq" asp-action="Index" class="btn view-btn1 text-white">Daha Çox</a>
+                <a asp-controller="University" asp-action="Index" class="btn view-btn1 text-white">Daha Çox</a>
             </div>
-        </div>
+        </div> *@
     </div>
 </div>
-<!-- Faq End -->
-
+<!-- Blog End -->
 
 @section Scripts {
     <script>
@@ -191,12 +173,12 @@
 
                 /* Toggle between hiding and showing the active panel */
                 var panel = this.nextElementSibling;
-                if (panel.style.display === "block") {
+                if (panel.style.display === "block") { 
                     panel.style.display = "none";
                 } else {
                     panel.style.display = "block";
                 }
             });
         }
-    </script>
+    </script> 
 }

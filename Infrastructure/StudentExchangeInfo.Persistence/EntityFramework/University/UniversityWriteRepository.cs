@@ -20,7 +20,20 @@ namespace StudentExchangeInfo.Persistence.EntityFramework
             context.SaveChanges();
         }
 
-		public async Task RegisterChangedUniversity(University university)
+        public void IsRegistred(University university)
+        {
+            using var context = new Context();
+
+            if (university.IsRegistred)
+                university.IsRegistred = false;
+            else
+                university.IsRegistred = true;
+
+            context.Universities.Update(university);
+            context.SaveChanges();
+        }
+
+        public async Task RegisterChangedUniversity(University university)
 		{
             using var context = new Context();
 

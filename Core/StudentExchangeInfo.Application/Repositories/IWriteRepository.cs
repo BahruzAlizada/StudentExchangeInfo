@@ -9,5 +9,6 @@ namespace StudentExchangeInfo.Application.Repositories
         void Delete(T entity);
         void Update(T entity);
         Task UpdateAsync(T entity);
+        void Activity(T entity);
     }
 }

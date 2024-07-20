@@ -20,7 +20,7 @@ namespace StudentExchangeInfo.Persistence.EntityFramework
         {
             using var context = new Context();
 
-            List<Contact> contacts = await context.Contacts.OrderByDescending(x=>x.Id).Skip((take - 1) * page).
+            List<Contact> contacts = await context.Contacts.OrderByDescending(x=>x.Id).Skip((page - 1) * take).
                 Take(take).ToListAsync();
             return contacts;
         }

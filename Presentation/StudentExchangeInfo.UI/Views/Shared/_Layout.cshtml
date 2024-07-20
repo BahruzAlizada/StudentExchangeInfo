@@ -22,22 +22,150 @@
     <link rel="stylesheet" href="~/assets/css/slick.css">
     <link rel="stylesheet" href="~/assets/css/nice-select.css">
     <link rel="stylesheet" href="~/assets/css/style.css">
+
+    <style>
+        .logo-slider {
+    overflow: hidden;
+    padding: 30px 0 0 0;
+    white-space: nowrap;
+    position: relative;
+}
+
+.logo-slider:hover .logos-slide {
+    animation-play-state: paused;
+}
+
+.logos-slide {
+    display: inline-block;
+    animation: 45s slide infinite linear;
+}
+
+.logos-slide img {
+    width: 183px;
+    height: 83px;
+    margin: 0 40px;
+    background-color:transparent;
+}
+
+
+@@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+
+       
+
+        .feedback-section {
+            margin-top: 50px;
+        }
+
+            .feedback-section h1 {
+                font-size: 24px;
+                color: black;
+            }
+
+            .feedback-section p {
+                font-size: 14px;
+                color: #555;
+                margin-bottom: 30px;
+            }
+
+        .feedback-button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .footer {
+            padding: 17px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+            .footer div {
+                flex: 1 1 200px;
+                margin: 10px;
+            }
+
+                .footer div h3 {
+                    font-size: 18px;
+                    color: #333;
+                    margin-bottom: 10px;
+                }
+
+                .footer div ul {
+                    list-style-type: none;
+                    padding: 0;
+                }
+
+                    .footer div ul li {
+                        margin: 5px 0;
+                        font-size: 14px;
+                        color: #555;
+                    }
+
+                        .footer div ul li a {
+                            color: #555;
+                            text-decoration: none;
+                        }
+
+                            .footer div ul li a:hover {
+                                text-decoration: underline;
+                            }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+            .stats div {
+                margin: 0 20px;
+                font-size: 14px;
+                color: #333;
+            }
+
+                .stats div span {
+                    display: block;
+                    font-size: 18px;
+                    color: #0056b3;
+                }
+
+        .social-icons {
+            margin-top: 20px;
+        }
+
+            .social-icons img {
+                width: 24px;
+                height: 24px;
+                margin: 0 10px;
+            }
+
+    
+    </style>
+
     @RenderSection("Css", false)
 </head>
 
 <body>
-    <!--? Preloader Start -->
-    <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="preloader-circle"></div>
-                <div class="preloader-img pere-text">
-                    <img src="~/assets/img/logo/logo.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Preloader Start -->
+
     <header>
         <!-- Header Start -->
         <div class="header-area">
@@ -52,57 +180,50 @@
         @RenderBody()
     </main>
 
-    <!-- Service Start-->
-    <div class="shop-method-area">
-        <div class="container">
-            <div class="method-wrapper">
-                <div class="row d-flex justify-content-between">
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <div class="single-method mb-40">
-                            <i class="ti-package"></i>
-                            <h6>Free Shipping Method</h6>
-                            <p>aorem ixpsacdolor sit ameasecur adipisicing elitsf edasd.</p>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <div class="single-method mb-40">
-                            <i class="ti-unlock"></i>
-                            <h6>Secure Payment System</h6>
-                            <p>aorem ixpsacdolor sit ameasecur adipisicing elitsf edasd.</p>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <div class="single-method mb-40">
-                            <i class="ti-reload"></i>
-                            <h6>Secure Payment System</h6>
-                            <p>aorem ixpsacdolor sit ameasecur adipisicing elitsf edasd.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="logo-slider" data-v-4ef8651c="">
+        <div class="logos-slide" data-v-4ef8651c="">
+            <a href="https://erasmus-plus.ec.europa.eu/" target="_blank"><img src="~/assets/img/partner/eras.svg" data-v-4ef8651c=""></a>
+            <a href="https://www.studyinturkiye.gov.tr/StudyinTurkey/StudyinTurkey" target="_blank"><img src="~/assets/img/partner/studyinturkey-logo-black.svg" data-v-4ef8651c=""></a>
+            <a href="https://studyinazerbaijan.edu.az/web/" target="_blank"><img src="~/assets/img/partner/logo.png" data-v-4ef8651c=""></a>
+            <a href="https://azerbaijan.travel/" target="_blank"><img src="~/assets/img/partner/travel.svg" data-v-4ef8651c=""></a>
         </div>
     </div>
-    <!-- Service End-->
 
     <!-- Footer Start-->
-    <footer>
-        <div class="footer-area footer-padding">
-            <div class="container">
-                @await Component.InvokeAsync("Footer")
+    <div class="container">
+        <div class="feedback-section" style="padding:17px;">
+            <h1>Rəy bildirin</h1>
+                <div class="row">
+                    <div class="col-md-9">
+                        <p>Portalın təkmilləşdirilməsi üçün öz rəyinizi bildirin və ya portalla bağlı şikayətinizi bizə göndərin.</p>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="feedback-button" asp-controller="Contact" asp-action="Index">Rəy bildirin</a>
+                    </div>
+                </div>
+        </div>
+        @await Component.InvokeAsync("Footer")
+       @*  <hr />
+        <div class="footer-bottom">
+            “İnnovasiya və Rəqəmsal İnkişaf Agentliyi” Publik Hüquqi Şəxsi
+        </div> 
+        <div class="stats">
+            <div>
+                <span>44586</span>
+                Yeni ziyarətçilər
             </div>
-        </div>
-    </footer>
-    <!-- Footer End-->
-    <!--? Search model Begin -->
-    <div class="search-model-box">
-        <div class="h-100 d-flex align-items-center justify-content-center">
-            <div class="search-close-btn">+</div>
-            <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Searching key.....">
-            </form>
-        </div>
+            <div>
+                <span>909090</span>
+                Səhifə baxış sayı
+            </div>
+            <div>
+                <span>7.35 dəq</span>
+                Orta sərf olunan vaxt
+            </div>
+        </div> *@
     </div>
-    <!-- Search model end -->
+    <!-- Footer End-->
+
     <!-- JS here -->
 
     <script src="~/assets/js/vendor/modernizr-3.5.0.min.js"></script>
@@ -127,21 +248,9 @@
     <script src="~/assets/js/jquery.nice-select.min.js"></script>
     <script src="~/assets/js/jquery.sticky.js"></script>
 
-    <script>
-        $(document).on("click", "#subBtn", function () {
-            $("#error").empty()
-
-            $.ajax({
-                url: "/Home/Subscripe/",
-                type: "get",
-                data: {
-                    "email": $("#subBtn").prev().val()
-                },
-                success: function (res) {
-                    $("#error").append(res);
-                }
-            })
-        });
+    <script asp-append-version="true">
+        var copy = document.querySelector(".logos-slide").cloneNode(true);
+        document.querySelector(".logo-slider").appendChild(copy);
     </script>
 
     <!-- contact js -->

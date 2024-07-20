@@ -1,0 +1,91 @@
+﻿@model List<Blog>
+
+@{
+    ViewBag.Title = "Xəbərlər";
+}
+
+@section Css{
+    <style>
+        .containeeer {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 17px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .news-item {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 20px;
+        }
+
+            .news-item:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+            }
+
+            .news-item img {
+                width: 150px;
+                height: 100px;
+                object-fit: cover;
+                margin-right: 20px;
+                border-radius: 5px;
+            }
+
+        .news-content {
+            flex: 1;
+        }
+
+            .news-content h3 {
+                font-size: 18px;
+                margin: 0 0 10px 0;
+                color: #333;
+            }
+
+            .news-content p {
+                font-size: 14px;
+                color: #999;
+                margin: 0;
+            }
+    </style>
+}
+
+
+<!--? Hero Area Start-->
+<div class="slider-area" style="height:120px;">
+    <div class="single-slider slider-height2 ">
+    </div>
+</div>
+<!--? Hero Area End-->
+
+<div class="containeeer">
+    @foreach(Blog item in Model)
+    {
+        <div class="news-item">
+            <img src="~/assets/img/blogs/@item.Image" alt="Digital Bridge event">
+            <div class="news-content">
+                <h3><a style="color:black;" asp-controller="News" asp-action="Detail" asp-route-id="@item.Id">@item.Title</a></h3>
+                <p>Yaradılma tarixi - @item.Created.ToShortDateString()</p>
+            </div>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-12">
+            <div class="pagnation my-2">
+                <ul style="list-style:none;display:flex;justify-content:center;">
+
+                    @for (int i = 1; i <= ViewBag.PageCount; i++)
+                    {
+                        <li class="page-item  @(i == ViewBag.CurrentPage ? "active" : "")"><a class="page-link" asp-action="Index" asp-route-page="@i">@i</a></li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>

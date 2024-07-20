@@ -9,5 +9,8 @@ namespace StudentExchangeInfo.Domain.Entities
         public string Quetsion { get; set; }
         [Required(ErrorMessage = "Bu xana boş ola bilməz")]
         public string Answer { get; set; }
-	}
+
+        public int? CategoryId { get; set; }
+        public FaqCategory? Category { get; set; }
+    }
 }

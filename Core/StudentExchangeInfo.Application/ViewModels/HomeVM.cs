@@ -7,5 +7,7 @@ namespace StudentExchangeInfo.Application.ViewModels
         public List<Slider> Sliders { get; set; }
         public List<University> Universities { get; set;}
         public List<Faq> Faqs { get; set; }
+        public List<Blog> Blogs { get; set; }
+        public About About { get; set; }
     }
 }

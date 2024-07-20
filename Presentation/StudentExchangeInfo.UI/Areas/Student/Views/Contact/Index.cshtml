@@ -1,0 +1,33 @@
+﻿@model Contact
+
+
+<div class="scrollable-container">
+    <h4 style="text-align:center;">Əlaqə</h4>
+    <p style="text-align:center;">İrad, təklif və iş birlikləri üçün aşağıdaki formu dolduraraq bizimlə əlaqə saxlayın.</p>
+    <form method="post">
+
+      
+        <div class="mb-3 form-group">
+            <label class="form-label" asp-for="Subject">Mövzu</label>
+            <input class="form-control" asp-for="Subject" />
+            <span class="text-danger" asp-validation-for="Subject"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="Subject">Məzmun</label>
+            <textarea asp-for="Message" id="editor4" rows="9" class="form-control"></textarea>
+            <span class="text-danger" asp-validation-for="Message"></span>
+        </div>
+
+        <button type="submit" style="width:120px;margin-bottom:25px;" class="btn btn-outline-primary">Göndər</button>
+    </form>
+</div>
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+

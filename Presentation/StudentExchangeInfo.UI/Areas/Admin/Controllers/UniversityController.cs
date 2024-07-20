@@ -111,9 +111,10 @@ namespace StudentExchangeInfo.UI.Areas.Admin.Controllers
             #endregion
 
             dbUni.Id = uni.Id;
+            uni.IsRegistred = dbUni.IsRegistred;
             dbUni.Status = uni.Status;
             dbUni.Name = uni.Name;
-            dbUni.IsRegistred = uni.IsRegistred;
+            
 
             await universityWriteRepository.UpdateAsync(uni);
             return RedirectToAction("Index");
@@ -143,5 +144,18 @@ namespace StudentExchangeInfo.UI.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
         #endregion
+
+        #region IsRegistred
+        public IActionResult IsRegistred(int? id)
+        {
+            if (id == null) return NotFound();
+            University university = universityReadRepository.Get(x => x.Id == id);
+            if (university == null) return BadRequest();
+
+            universityWriteRepository.IsRegistred(university);
+            return RedirectToAction("Index");
+        }
+        #endregion
+
     }
 }

@@ -142,7 +142,38 @@ namespace StudentExchangeInfo.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("About", (string)null);
+                    b.ToTable("About");
+                });
+
+            modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.Blog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Blogs");
                 });
 
             modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.Contact", b =>
@@ -177,7 +208,7 @@ namespace StudentExchangeInfo.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Contacts", (string)null);
+                    b.ToTable("Contacts");
                 });
 
             modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.ExchangeProgram", b =>
@@ -191,7 +222,15 @@ namespace StudentExchangeInfo.Persistence.Migrations
                     b.Property<int>("AppUserId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Condition")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Document")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -206,57 +245,7 @@ namespace StudentExchangeInfo.Persistence.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("ExchangePrograms", (string)null);
-                });
-
-            modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.ExchangeProgramCondition", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Condition")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ExchangeProgramId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ExchangeProgramId");
-
-                    b.ToTable("ExchangeProgramConditions", (string)null);
-                });
-
-            modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.ExchangeProgramDocument", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Document")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ExchangeProgramId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ExchangeProgramId");
-
-                    b.ToTable("ExchangeProgramDocuments", (string)null);
+                    b.ToTable("ExchangePrograms");
                 });
 
             modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.Faq", b =>
@@ -271,6 +260,9 @@ namespace StudentExchangeInfo.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Quetsion")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -280,7 +272,29 @@ namespace StudentExchangeInfo.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Faqs", (string)null);
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Faqs");
+                });
+
+            modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.FaqCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FaqCategories");
                 });
 
             modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.Motivation", b =>
@@ -304,7 +318,40 @@ namespace StudentExchangeInfo.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Motivations", (string)null);
+                    b.ToTable("Motivations");
+                });
+
+            modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.Post", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("Updated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.Prerequisite", b =>
@@ -324,7 +371,7 @@ namespace StudentExchangeInfo.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Prerequisites", (string)null);
+                    b.ToTable("Prerequisites");
                 });
 
             modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.Slider", b =>
@@ -352,7 +399,7 @@ namespace StudentExchangeInfo.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Sliders", (string)null);
+                    b.ToTable("Sliders");
                 });
 
             modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.SocialMedia", b =>
@@ -376,7 +423,7 @@ namespace StudentExchangeInfo.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SocialMedias", (string)null);
+                    b.ToTable("SocialMedias");
                 });
 
             modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.Subscribe", b =>
@@ -399,7 +446,7 @@ namespace StudentExchangeInfo.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Subscribes", (string)null);
+                    b.ToTable("Subscribes");
                 });
 
             modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.University", b =>
@@ -426,7 +473,7 @@ namespace StudentExchangeInfo.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Universities", (string)null);
+                    b.ToTable("Universities");
                 });
 
             modelBuilder.Entity("StudentExchangeInfo.Domain.Identity.AppRole", b =>
@@ -621,26 +668,24 @@ namespace StudentExchangeInfo.Persistence.Migrations
                     b.Navigation("AppUser");
                 });
 
-            modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.ExchangeProgramCondition", b =>
+            modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.Faq", b =>
                 {
-                    b.HasOne("StudentExchangeInfo.Domain.Entities.ExchangeProgram", "ExchangeProgram")
-                        .WithMany("Conditions")
-                        .HasForeignKey("ExchangeProgramId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("StudentExchangeInfo.Domain.Entities.FaqCategory", "Category")
+                        .WithMany("Faqs")
+                        .HasForeignKey("CategoryId");
 
-                    b.Navigation("ExchangeProgram");
+                    b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.ExchangeProgramDocument", b =>
+            modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.Post", b =>
                 {
-                    b.HasOne("StudentExchangeInfo.Domain.Entities.ExchangeProgram", "ExchangeProgram")
-                        .WithMany("Documents")
-                        .HasForeignKey("ExchangeProgramId")
+                    b.HasOne("StudentExchangeInfo.Domain.Identity.AppUser", "User")
+                        .WithMany("Posts")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ExchangeProgram");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("StudentExchangeInfo.Domain.Identity.AppUser", b =>
@@ -652,11 +697,9 @@ namespace StudentExchangeInfo.Persistence.Migrations
                     b.Navigation("University");
                 });
 
-            modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.ExchangeProgram", b =>
+            modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.FaqCategory", b =>
                 {
-                    b.Navigation("Conditions");
-
-                    b.Navigation("Documents");
+                    b.Navigation("Faqs");
                 });
 
             modelBuilder.Entity("StudentExchangeInfo.Domain.Entities.University", b =>
@@ -667,6 +710,8 @@ namespace StudentExchangeInfo.Persistence.Migrations
             modelBuilder.Entity("StudentExchangeInfo.Domain.Identity.AppUser", b =>
                 {
                     b.Navigation("ExchangePrograms");
+
+                    b.Navigation("Posts");
                 });
 #pragma warning restore 612, 618
         }

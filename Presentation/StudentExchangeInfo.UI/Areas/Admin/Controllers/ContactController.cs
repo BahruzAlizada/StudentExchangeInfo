@@ -18,13 +18,12 @@ namespace StudentExchangeInfo.UI.Areas.Admin.Controllers
         }
 
         #region Index
-        public async Task<IActionResult> Index(int page =1)
+        public async Task<IActionResult> Index(int page = 1)
         {
-            double take = 18;
-            ViewBag.PageCount = await contactReadRepository.ContactPageCountAsync(take);
+            ViewBag.PageCount = await contactReadRepository.ContactPageCountAsync(24);
             ViewBag.CurrentPage = page;
 
-            List<Contact> contacts = await contactReadRepository.GetContactsWithPagedAsync((int)take, page);
+            List<Contact> contacts = await contactReadRepository.GetContactsWithPagedAsync(24, page);
             return View(contacts);
         }
         #endregion

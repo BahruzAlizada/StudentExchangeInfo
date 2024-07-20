@@ -9,10 +9,12 @@ namespace StudentExchangeInfo.Persistence.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=DESKTOP-OK3QKVJ;Database=StudentExchangeInfo;Trusted_Connection=SSPI;Encrypt=false;TrustServerCertificate=true;Integrated Security=True;"); 
-        }
-        
-        public DbSet<Slider> Sliders { get; set; }
+            //optionsBuilder.UseSqlServer("Server=DESKTOP-OK3QKVJ;Database=StudentExchangeInfo;Trusted_Connection=SSPI;Encrypt=false;TrustServerCertificate=true;Integrated Security=True;"); 
+            optionsBuilder.UseSqlServer("Data Source=SQL5113.site4now.net;Initial Catalog=db_aa7bfc_bahruzalizada;User Id=db_aa7bfc_bahruzalizada_admin;Password=Behruz1234");
+
+		}
+
+		public DbSet<Slider> Sliders { get; set; }
         public DbSet<University> Universities { get; set; }
         public DbSet<About> About { get; set; }
         public DbSet<Subscribe> Subscribes { get; set; }
@@ -22,5 +24,8 @@ namespace StudentExchangeInfo.Persistence.Concrete
         public DbSet<Prerequisite> Prerequisites { get; set; }
         public DbSet<Motivation> Motivations { get; set; }
         public DbSet<ExchangeProgram> ExchangePrograms { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<FaqCategory> FaqCategories { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
     }
 }

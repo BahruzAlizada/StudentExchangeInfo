@@ -6,28 +6,29 @@
 
 
 <!-- Hero Area Start-->
-<div class="slider-area ">
-    <div class="single-slider slider-height2 d-flex align-items-center">
-        <div class="container">
+<div class="slider-area" style="height:100px;">
+    <div class="single-slider slider-height2 d-flex align-items-center" >
+        <p>Universitetlər</p>
+       @*  <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="hero-cap text-center">
-                        <h2>Universitetlər</h2>
+                        <p>Universitetlər</p>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> *@
     </div>
 </div>
 <!-- Hero Area End-->
 <!-- UNiversity Start -->
-<div class="popular-items section-padding30">
+<div class="popular-items section-padding" style="margin-top:-20px;">
     <div class="container">
         <!-- Section tittle -->
         <div class="row justify-content-center">
             <div class="col-xl-7 col-lg-8 col-md-10">
                 <div class="section-tittle mb-70 text-center">
-                    <h2>Universitetlər</h2>
+                    <h2>Tərəfdaş Universitetlər</h2>
                     <p>Bizimlə əməkdaşlıq edən universitetlərin siyahısı aşağıdakılardır.</p>
                 </div>
             </div>
@@ -35,10 +36,10 @@
         <div class="row">
             @foreach (University university in Model)
             {
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                     <div class="single-popular-items mb-50 text-center">
                         <div class="popular-img">
-                            <img style="height:289px; width:289px;" src="~/assets/img//university/@university.Image" alt="">
+                            <img style="height:220px; width:220px;" src="~/assets/img//university/@university.Image" alt="">
                             @* <div class="img-cap">
                                 <span>Daha Ətraflı</span>
                             </div> *@

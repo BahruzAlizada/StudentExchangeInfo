@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StudentExchangeInfo.Application.Abstract;
+using StudentExchangeInfo.Application.ViewModels;
 using StudentExchangeInfo.Domain.Entities;
 using StudentExchangeInfo.Persistence.EntityFramework;
 
@@ -8,16 +9,22 @@ namespace StudentExchangeInfo.UI.Controllers
     public class FaqController : Controller
     {
         private readonly IFaqReadRepository faqReadRepository;
-        public FaqController(IFaqReadRepository faqReadRepository)
+        private readonly IFaqCategoryReadRepository faqCategoryReadRepository;
+        public FaqController(IFaqReadRepository faqReadRepository, IFaqCategoryReadRepository faqCategoryReadRepository)
         {                                                                              
-             this.faqReadRepository=faqReadRepository;
+            this.faqReadRepository=faqReadRepository;
+            this.faqCategoryReadRepository=faqCategoryReadRepository;
         }
 
         #region Index
-        public IActionResult Index()
+        public IActionResult Index(int catId=1)
         {
-            List<Faq> faqs = faqReadRepository.GetAll(x => x.Status);
-            return View(faqs);
+            FaqVM faqVM = new FaqVM
+            {
+                FaqCategories = faqCategoryReadRepository.GetAll(x => x.Status),
+                Faqs = faqReadRepository.GetAll(x => x.Status && x.CategoryId==catId)
+            };
+            return View(faqVM);
         }
         #endregion
     }

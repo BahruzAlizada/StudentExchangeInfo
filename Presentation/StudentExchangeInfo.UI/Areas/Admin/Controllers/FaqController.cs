@@ -11,16 +11,19 @@ namespace StudentExchangeInfo.UI.Areas.Admin.Controllers
     {
         private readonly IFaqReadRepository faqReadRepository;
         private readonly IFaqWriteRepository faqWriteRepository;
-        public FaqController(IFaqReadRepository faqReadRepository, IFaqWriteRepository faqWriteRepository)
+        private readonly IFaqCategoryReadRepository faqCategoryReadRepository;
+        public FaqController(IFaqReadRepository faqReadRepository, IFaqWriteRepository faqWriteRepository,
+            IFaqCategoryReadRepository faqCategoryReadRepository)
         {
             this.faqReadRepository = faqReadRepository;
             this.faqWriteRepository = faqWriteRepository;
+            this.faqCategoryReadRepository = faqCategoryReadRepository;
         }
 
         #region Index
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            List<Faq> faqs = faqReadRepository.GetAll();
+            List<Faq> faqs = await faqReadRepository.GetFaqsAsync();
             return View(faqs);
         }
         #endregion
@@ -28,14 +31,18 @@ namespace StudentExchangeInfo.UI.Areas.Admin.Controllers
         #region Create
         public IActionResult Create()
         {
+            ViewBag.Categories = faqCategoryReadRepository.GetAll();
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public IActionResult Create(Faq faq)
+        public IActionResult Create(Faq faq, int catId)
         {
+            ViewBag.Categories = faqCategoryReadRepository.GetAll();
+            faq.CategoryId = catId;
+
             faqWriteRepository.Add(faq);
             return RedirectToAction("Index");
         }
@@ -48,24 +55,27 @@ namespace StudentExchangeInfo.UI.Areas.Admin.Controllers
             Faq? dbFaq = faqReadRepository.Get(x => x.Id == id);
             if (dbFaq == null) return BadRequest();
 
+            ViewBag.Categories = faqCategoryReadRepository.GetAll();
+
             return View(dbFaq);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public IActionResult Update(int? id,Faq faq)
+        public IActionResult Update(int? id,Faq faq, int catId)
         {
             if (id == null) return NotFound();
             Faq? dbFaq = faqReadRepository.Get(x => x.Id == id);
             if (dbFaq == null) return BadRequest();
 
-            dbFaq.Id = faq.Id;
-            dbFaq.Status=faq.Status;
+            ViewBag.Categories = faqCategoryReadRepository.GetAll();
+
             dbFaq.Answer = faq.Answer;
             dbFaq.Quetsion = faq.Quetsion;
+            dbFaq.CategoryId = catId;
 
-            faqWriteRepository.Update(faq);
+            faqWriteRepository.Update(dbFaq);
             return RedirectToAction("Index");
         }
         #endregion

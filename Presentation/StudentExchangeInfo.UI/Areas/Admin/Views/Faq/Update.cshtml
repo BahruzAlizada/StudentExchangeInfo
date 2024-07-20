@@ -16,6 +16,22 @@
                         <span asp-validation-for="Quetsion" class="text-danger"></span>
                     </div>
 
+                    <div class="col-md-12 form-group p_star my-3">
+                        <select class="form-control" name="catId">
+                            @foreach (FaqCategory faqCategory in ViewBag.Categories)
+                            {
+                                if (Model.CategoryId == faqCategory.Id)
+                                {
+                                    <option selected value="@faqCategory.Id">@faqCategory.Name</option>
+                                }
+                                else
+                                {
+                                    <option value="@faqCategory.Id">@faqCategory.Name</option>
+                                }
+                            }
+                        </select>
+                    </div>
+
                     <div class="mb-3 form-group">
                         <label asp-for="Answer" class="form-label">Cavab</label>
                         <textarea asp-for="Answer" id="editor" class="form-control"></textarea>

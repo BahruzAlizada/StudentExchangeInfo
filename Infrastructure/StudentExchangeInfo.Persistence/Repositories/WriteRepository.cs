@@ -7,6 +7,18 @@ namespace StudentExchangeInfo.Persistence.Repositories
 {
     public class WriteRepository<T> : IWriteRepository<T> where T : BaseEntity
     {
+        public void Activity(T entity)
+        {
+            using var context = new Context();
+            if (entity.Status)
+                entity.Status = false;
+            else
+                entity.Status = true;
+
+            context.Set<T>().Update(entity);
+            context.SaveChanges();
+        }
+
         public void Add(T entity)
         {
             using var context = new Context();

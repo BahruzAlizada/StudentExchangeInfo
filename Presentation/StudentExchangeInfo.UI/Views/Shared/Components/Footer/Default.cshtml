@@ -1,71 +1,53 @@
-﻿
-
-<div class="row d-flex justify-content-between">
-
-    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
-        <div class="single-footer-caption mb-50">
-            <div class="single-footer-caption mb-30">
-                <!-- logo -->
-                <div class="footer-logo">
-                    <a asp-controller="Home" asp-action="Index"><img src="~/assets/img/logo/BaseLogo.png" alt="" style="width:160px;height:27px;"></a>
-                </div>
-                <div class="footer-tittle" style="margin-top:-50px;">
-                    <div class="footer-pera">
-                        <p style="margin-top:80px; font-size:15px;">
-                            Mübadilə proqramları ilə bağlı tələbə və universitetlər arasında məlumatlandırmanı 
-                            asanlaşdırmaq məqsədi ilə hazırlanmışdır.
-                        </p>
-                    </div>
-                    <div class="footer-copy-right f-right">
-                        <!-- social -->
-
-                    </div>
-                </div>
-            </div>
-        </div>
+﻿<div class="footer" style="background-color:transparent;">
+    <div>
+        <h3><a asp-controller="Home" asp-action="Index" style="color:black;">StudentExchange.İnfo</a></h3>
+        <ul>
+            <li><p style="font-size:13px;">tələbələrə mübadilə proqramları barəsində daha ətraflı məlumat vermək üçün yaradılıb.</p></li>
+        </ul>
     </div>
 
-    <div class="col-xl-2 col-lg-3 col-md-3 col-sm-5">
-        <div class="single-footer-caption mb-50">
-            <div class="footer-tittle">
-                <h4>Sürətli linklər</h4>
-                <ul>
-                    <li><a asp-controller="Home" asp-action="Index">Ana Səhifə</a></li>
-                    <li><a asp-controller="About" asp-action="Index">Haqqımızda</a></li>
-                    <li><a asp-controller="Prerequisite" asp-action="Index">İlkin Tələblər</a></li>
-                    <li><a asp-controller="Contact" asp-action="Index">Əlaqə</a></li>
-                </ul>
-            </div>
-        </div>
+    <div>
+        <h3>Sürətli Linklər</h3>
+        <ul>
+            <li><a asp-controller="Home" asp-action="Index">Ana Səhifə</a></li>
+            <li><a asp-controller="About" asp-action="Index">Haqqımızda</a></li>
+            <li><a asp-controller="University" asp-action="Index">Universitetlər</a></li>
+            @if(User.Identity.IsAuthenticated)
+            {
+                <li><a asp-controller="Account" asp-action="Logout">Çıxış et</a></li>
+            }
+            else
+            {
+                <li><a asp-controller="Account" asp-action="Login">Daxil ol</a></li>
+            }
+        </ul>
     </div>
 
-    <div class="col-xl-2 col-lg-3 col-md-3 col-sm-5">
-        <div class="single-footer-caption mb-50">
-            <div class="footer-tittle">
-                <h4>Qeydiyyat</h4>
-                <ul>
-                    <li><a asp-controller="Home" asp-action="Index">Universitet qeydiyyatı</a></li>
-                    <li><a asp-controller="About" asp-action="Index">Tələbə qeydiyyatı</a></li>
-                </ul>
-            </div>
-        </div>
+    <div>
+        <h3>Qeydiyyat Növləri</h3>
+        <ul>
+            <li><a asp-controller="Account" asp-action="StudentRegister">Tələbə olaraq qeydiyyat</a></li>
+            <li><a asp-controller="Account" asp-action="UniversityRegister">Universitet olaraq qeydiyyat</a></li>
+        </ul>
     </div>
-
-    <div class="col-xl-2 col-lg-3 col-md-3 col-sm-5">
-        <div class="subscribe_part" style="background:none;">
-
-        <div class="footer-tittle">
-            <h4>Abunə ol</h4>
-            <p style="color:black;"><a asp-controller="Home" asp-action="Subscribe" class="btn_1" style="border-radius:16px; padding:6px;">Bizə abunə ol</a></p>
-            <p></p>
-           
-        </div>
-
-        </div>
+    <div>
+        <h3>Digər</h3>
+        <ul>
+            <li><a asp-controller="Prerequisite" asp-action="Index">İlkin Tələblər <span style="padding:3px; background-color:green;color:white; font-size:13px; border-radius:6px;">yeni</span> </a></li>
+            <li><a asp-controller="Motivation" asp-action="Index">Motivasiya Məktubu <span style="padding:3px; background-color:green;color:white; font-size:13px; border-radius:6px;">yeni</span> </a></li>
+        </ul>
     </div>
-
+    <div>
+        <h3>Bizim ilə Əlaqə</h3>
+        <ul>
+            <li><a asp-controller="Contact" asp-action="Index">Əlaqə</a></li>
+            <li><a asp-controller="Faq" asp-action="Index">FAQ</a></li>
+            <li><a asp-controller="Home" asp-action="Subscribe">Abunə ol <span style="padding:3px; background-color:green;color:white; font-size:13px; border-radius:6px;">yeni</span> </a></li>
+        </ul>
+    </div>
+    @*  <div>
+    <select>
+    <option value="az">Azərbaycan dili</option>
+    </select>
+    </div> *@
 </div>
-
-@section Scripts{
-    <partial name="_ValidationScriptsPartial" />
-}

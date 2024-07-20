@@ -19,5 +19,6 @@ namespace StudentExchangeInfo.Domain.Identity
 
 		public University? University { get; set; }
 		public List<ExchangeProgram>? ExchangePrograms { get; set; }
+		public List<Post>? Posts { get; set; }
 	}
 }

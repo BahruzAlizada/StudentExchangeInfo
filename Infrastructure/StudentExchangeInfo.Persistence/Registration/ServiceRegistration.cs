@@ -16,7 +16,13 @@ namespace StudentExchangeInfo.Persistence.Registration
 
             services.AddScoped<IAboutReadRepository, AboutReadRepository>();
             services.AddScoped<IAboutWriteRepository, AboutWriteRepository>();
-            
+
+            services.AddScoped<IBlogReadRepository, BlogReadRepository>();
+            services.AddScoped<IBlogWriteRepository, BlogWriteRepository>();
+
+            services.AddScoped<IFaqCategoryReadRepository, FaqCategoryReadRepository>();
+            services.AddScoped<IFaqCategoryWriteRepository, FaqCategoryWriteRepository>();
+
             services.AddScoped<IFaqReadRepository, FaqReadRepository>();
             services.AddScoped<IFaqWriteRepository,  FaqWriteRepository>();
 
@@ -37,6 +43,9 @@ namespace StudentExchangeInfo.Persistence.Registration
 
             services.AddScoped<IExchangeProgramReadRepository, ExchangeProgramReadRepository>();
             services.AddScoped<IExchangeProgramWriteRepository, ExchangeProgramWriteRepository>();
+
+            services.AddScoped<IPostReadRepository, PostReadRepository>();
+            services.AddScoped<IPostWriteRepository, PostWriteRepository>();
 
             
         }

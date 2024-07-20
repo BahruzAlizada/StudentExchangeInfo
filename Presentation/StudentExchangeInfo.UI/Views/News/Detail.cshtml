@@ -1,0 +1,48 @@
+﻿@model Blog
+
+@{
+    ViewBag.Title = "Xəbər";
+}
+
+
+@section Css{
+<style>
+        .news-container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .news-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #666;
+            margin: 10px 0;
+        }
+
+
+
+        p {
+            line-height: 1.6;
+            color: #333;
+            margin: 10px 0;
+        }
+</style>
+}
+
+<div class="news-container">
+    <h1>@Model.Title</h1>
+    <div class="news-info">
+        <span>Yaradılma tarixi - @Model.Created.ToShortDateString()</span>
+    </div>
+
+    <p>@Html.Raw(Model.Description)</p>
+</div>

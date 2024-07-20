@@ -21,7 +21,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Features" Version="8.0.3" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,10 +33,9 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Student\Data\" />
-    <Folder Include="Areas\Student\Models\" />
-    <Folder Include="Areas\UniversityPanel\Data\" />
-    <Folder Include="Areas\UniversityPanel\Models\" />
+    <Folder Include="wwwroot\assets\img\blogs\" />
+    <Folder Include="wwwroot\assets\img\post\" />
+    <Folder Include="wwwroot\assets\img\partner\" />
     <Folder Include="wwwroot\assets\img\university\" />
     <Folder Include="wwwroot\assets\img\slider\" />
   </ItemGroup>

@@ -16,6 +16,7 @@
                 <thead>
                     <tr>
                         <th>Sual</th>
+                        <th>Kateqoriya</th>
                         <th>Status</th>
                         <th style="text-align:right">Aksiyonlar</th>
                     </tr>
@@ -25,6 +26,7 @@
                     {
                         <tr>
                             <td>@item.Quetsion</td>
+                            <td>@item.Category.Name</td>
                             <td>
                                 @if (item.Status)
                                 {

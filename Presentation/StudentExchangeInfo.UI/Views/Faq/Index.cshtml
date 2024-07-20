@@ -1,35 +1,16 @@
-﻿@model List<Faq>
+﻿@model FaqVM
 
 @{
     ViewBag.Title = "FAQ";
 }
 
-@{
-    int number = 1;
-}
-
 @section Css {
     <style>
         /* Style the buttons that are used to open and close the accordion panel */
-        .accordion {
-            background-color: white;
-            color: black;
-            cursor: pointer;
-            padding: 18px;
-            width: 100%;
-            text-align: left;
-            border-radius: 5px;
-            border: 1px solid #dedede;
-            outline: none;
-            transition: all linear .15s;
-            text-shadow: 0 1px 0 #444;
-        }
+        
 
             /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-            .active, .accordion:hover {
-                background-color: #337ab7;
-                color: white;
-            }
+           
 
         /* Style the accordion panel. Note: hidden by default */
         .panel {
@@ -38,77 +19,115 @@
             display: none;
             overflow: hidden;
         }
+
+
+
+
+
+
+
+        .sidebar {
+           
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+            .sidebar ul {
+                list-style: none;
+                padding: 0;
+            }
+
+                .sidebar ul li {
+                    margin-bottom: 10px;
+                }
+
+                    .sidebar ul li a {
+                        text-decoration: none;
+                        color: #333;
+                        font-weight: bold;
+                        display: block;
+                        padding: 10px 15px;
+                        border-radius: 5px;
+                        transition: background-color 0.3s ease;
+                    }
+
+                        .sidebar ul li a.active, .sidebar ul li a:hover {
+                            background-color: #e1ecf4;
+                        }
+
+        
+
+        .faq {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-item {
+            margin-bottom: 10px;
+        }
+
+        .faq-question {
+            width: 100%;
+            background-color: #f9fafc;
+            border: 1px solid #e1e4e8;
+            padding: 15px;
+            text-align: left;
+            font-size: 16px;
+            color: #333;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            .faq-question:hover {
+                background-color: #e1ecf4;
+            }
+
+
+
     </style>
 }
 
 <!--? Hero Area Start-->
-<div class="slider-area ">
-    <div class="single-slider slider-height2 d-flex align-items-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="hero-cap text-center">
-                        <h2>FAQ</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="slider-area" style="height:120px;">
+    <div class="single-slider slider-height2 ">   
     </div>
 </div>
 <!--? Hero Area End-->
 
-@* <div class="container">
-    <div class="row">
-
-        <div class="col-12" style="padding:30px 0px;">
-            <h4>Ən Çox Verilən Suallar</h4>
-        </div>
-
-        <div class="col-12" style="padding-bottom:30px;">
-            @foreach (Faq faq in Model)
-            {
-                <div style="padding:12px 3px;">
-                    <button class="accordion">@number. @faq.Quetsion</button>
-                    <div class="panel">
-                        <p>@Html.Raw(faq.Answer)</p>
-                    </div>
-                </div>
-
-                number++;
-
-            }
-        </div>
-
-    </div>
-</div> *@
-
-<div class="popular-items section-padding30">
-    <div class="container">
-        <!-- Section tittle -->
-        <div class="row justify-content-center">
-            <div class="col-xl-7 col-lg-8 col-md-10">
-                <div class="section-tittle mb-70 text-center">
-                    <h2>Ən çox verilən suallar</h2>
-                </div>
+    <div class="row" style="padding:25px;">
+        <div class="col-md-3">
+            <div class="sidebar">
+                <ul>
+                    @foreach (var item in Model.FaqCategories)
+                    {
+                        <li><a asp-action="Index" asp-route-catId="@item.Id">@item.Name</a></li>
+                    }
+                </ul>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-12" style="padding-bottom:30px;">
-                @foreach (Faq faq in Model)
-                {
-                    <div style="padding:12px 3px;">
-                        <button class="accordion">@number. @faq.Quetsion</button>
-                        <div class="panel">
-                            <p>@Html.Raw(faq.Answer)</p>
+     </div>
+        <div class="col-md-9 content">
+                <div class="faq">
+                    @foreach (var item in Model.Faqs)
+                    {
+                        <div class="faq-item">
+                            <button class="faq-question accordion">@item.Quetsion</button>
+                            <div class="panel">
+                                <p>@Html.Raw(item.Answer)</p>
+                            </div>
                         </div>
-                    </div>
-
-                    number++;
-                }
+                    }
+                    
+                 
+                @* </div> *@
             </div>
-        </div>
-    </div>
-</div>
+
+     </div>
+ </div>
+
 
 
 @section Scripts {

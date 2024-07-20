@@ -15,5 +15,12 @@ namespace StudentExchangeInfo.Persistence.EntityFramework
             List<Faq> faqs = await context.Faqs.Where(x => x.Status).Take(take).ToListAsync();
             return faqs;
         }
+
+        public async Task<List<Faq>> GetFaqsAsync()
+        {
+            using var context = new Context();
+            List<Faq> faqs = await context.Faqs.Include(x=>x.Category).ToListAsync();
+            return faqs;
+        }
     }
 }
